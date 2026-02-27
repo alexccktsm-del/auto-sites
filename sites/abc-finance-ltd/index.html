@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Finance Ltd</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .hero {
+            padding: 50px 20px;
+            text-align: center;
+            background: url('hero-background.jpg') no-repeat center center/cover;
+            color: white;
+        }
+        .about, .services, .contact {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+        }
+        .service {
+            padding: 20px;
+            width: 30%;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ABC Finance Ltd</h1>
+        <p>Your partner in machinery finance</p>
+    </header>
+    <section class="hero">
+        <h2>Welcome to ABC Finance Ltd</h2>
+        <p>Financing solutions for all your machinery needs.</p>
+        <a href="#contact" style="padding: 10px 20px; background-color: #fff; color: #4CAF50; text-decoration: none;">Contact Us</a>
+    </section>
+    <section class="about">
+        <h2>About Us</h2>
+        <p>ABC Finance Ltd specializes in providing flexible financing options for businesses in the machinery industry, helping you achieve your financial goals.</p>
+    </section>
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="service">
+            <h3>Equipment Financing</h3>
+            <p>Get competitive rates on financing for new and used machinery.</p>
+        </div>
+        <div class="service">
+            <h3>Leasing Options</h3>
+            <p>Flexible leasing plans tailored to your business needs.</p>
+        </div>
+        <div class="service">
+            <h3>Consultation Services</h3>
+            <p>Expert advice on financial strategies for machinery investments.</p>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or would like to learn more about our services, please reach out!</p>
+        <p>Email: <a href="mailto:testabc@gmail.com">testabc@gmail.com</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2023 ABC Finance Ltd. All rights reserved.</p>
+    </footer>
+</body>
+</html>
