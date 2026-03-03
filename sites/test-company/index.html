@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Test Company - Leading IT Solutions Provider">
+    <title>Test Company</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            background: url('https://source.unsplash.com/1600x900/?technology,computer') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            animation: fadeIn 1s ease-in;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        section {
+            padding: 60px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .card {
+            flex: 1;
+            margin: 15px;
+            min-width: 250px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .testimonial {
+            border-left: 3px solid #007BFF;
+            padding-left: 20px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: auto;
+        }
+        input, textarea {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Test Company</h1>
+        <button onclick="scrollToSection('contact')">Get Started</button>
+    </header>
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We are a leading IT solutions provider, dedicated to delivering innovative technology solutions that drive business success.</p>
+        </div>
+    </section>
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Building responsive and modern websites.</p>
+            </div>
+            <div class="card">
+                <h3>Mobile Apps</h3>
+                <p>Creating user-friendly mobile applications.</p>
+            </div>
+            <div class="card">
+                <h3>Cloud Solutions</h3>
+                <p>Delivering scalable cloud computing solutions.</p>
+            </div>
+            <div class="card">
+                <h3>IT Consulting</h3>
+                <p>Expert IT consulting services.</p>
+            </div>
+        </div>
+    </section>
+    <section id="why-choose-us">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <p>We prioritize customer satisfaction and deliver tailored solutions to meet your unique needs.</p>
+        </div>
+    </section>
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial">"Test Company transformed our business!" - Client A</div>
+            <div class="testimonial">"Professional and dedicated team." - Client B</div>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form onsubmit="return validateForm()">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2023 Test Company</p>
+        <div>
+            <a href="#" style="color: white;">Facebook</a> |
+            <a href="#" style="color: white;">Twitter</a> |
+            <a href="#" style="color: white;">LinkedIn</a>
+        </div>
+    </footer>
+    <script>
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !message) {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            alert("Message sent successfully!");
+            return true;
+        }
+    </script>
+</body>
+</html>
