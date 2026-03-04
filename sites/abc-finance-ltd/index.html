@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ABC Finance Ltd | Backhoe & Heavy Machinery Rentals</title>
+  <meta name="description" content="ABC Finance Ltd provides reliable backhoe and heavy machinery rentals with rapid delivery, expert operators, and transparent pricing. Serving construction, utilities, and landscaping projects." />
+  <meta name="keywords" content="backhoe rental, machinery rental, excavator hire, equipment hire, heavy equipment, construction equipment, ABC Finance Ltd" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ABC Finance Ltd | Backhoe & Heavy Machinery Rentals" />
+  <meta property="og:description" content="Flexible, reliable backhoe rentals for projects of every size. Safety-first, modern fleet, and delivery on your timeline." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0f1318;
+      --bg-soft:#141a21;
+      --surface:#ffffff;
+      --surface-2:#f5f7fa;
+      --text:#1c2430;
+      --text-soft:#435063;
+      --accent:#f7c400; /* safety yellow */
+      --accent-2:#ff8a00; /* construction orange */
+      --steel:#2a313b;
+      --line:#e6ecf2;
+      --ok:#2fbf71;
+      --warn:#f2994a;
+      --shadow:0 10px 30px rgba(18, 22, 28, 0.10);
+      --radius:14px;
+      --radius-sm:10px;
+      --container:1200px;
+      --hero-grad:linear-gradient(135deg, #0f1318 0%, #191f27 55%, #0f1318 100%);
+      --accent-grad:linear-gradient(135deg, var(--accent), var(--accent-2));
+      --speed:260ms;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
+      color:var(--text);
+      background:#f2f4f7;
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    .container{max-width:var(--container);margin-inline:auto;padding:0 20px}
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.82);
+      backdrop-filter:saturate(180%) blur(10px); border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo-badge{
+      width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+      background:var(--accent-grad);box-shadow:0 6px 20px rgba(250,170,0,0.35)
+    }
+    .brand h1{font-family:Montserrat,Inter,system-ui,sans-serif;font-size:1.1rem;letter-spacing:.3px;margin:0}
+    .brand small{display:block;font-size:.65rem;color:#6b7280;margin-top:-2px}
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-links a{
+      font-weight:500;color:#1f2937;opacity:.9;position:relative;padding:6px 2px;transition:opacity var(--speed) ease;
+    }
+    .nav-links a:after{
+      content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--accent-grad);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform var(--speed) ease;
+    }
+    .nav-links a:hover{opacity:1}
+    .nav-links a:hover:after{transform:scaleX(1)}
+    .cta{
+      background:var(--accent-grad);color:#0b0e13;font-weight:700;border:none;border-radius:999px;padding:10px 18px;
+      box-shadow:0 10px 22px rgba(250,170,0,.35);transition:transform var(--speed) ease, box-shadow var(--speed) ease;
+    }
+    .cta:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(250,170,0,.45)}
+    .burger{display:none;flex-direction:column;gap:5px;background:none;border:none}
+    .burger span{width:26px;height:2px;background:#1f2937;border-radius:2px;transition:all var(--speed) ease}
+    /* Hero */
+    .hero{
+      position:relative;background:var(--hero-grad);color:#eaf0f6;overflow:hidden
+    }
+    .hero:before{
+      content:"";position:absolute;inset:-40% -10% -40% -10%;pointer-events:none;opacity:.12;
+      background:
+        repeating-linear-gradient(135deg,transparent 0 18px,#fff 18px 20px),
+        radial-gradient(1800px 800px at 110% -10%, rgba(247,196,0,.35), transparent 60%),
+        radial-gradient(1200px 1000px at -10% 120%, rgba(255,138,0,.28), transparent 60%);
+      mix-blend:overlay;animation:float 18s linear infinite alternate;
+    }
+    @keyframes float{to{transform:translate3d(0,-10px,0) rotate(-1deg)}}
+    .hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding:72px 0 84px}
+    .kicker{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+      padding:6px 10px;border-radius:999px;font-size:.85rem;color:#e9f0f7}
+    .kicker svg{opacity:.9}
+    .hero h2{
+      margin:14px 0 10px;font-family:Montserrat,Inter,sans-serif;font-weight:800;letter-spacing:.2px;
+      font-size:clamp(30px,4.2vw,54px);line-height:1.08;color:#fff;
+    }
+    .hero p{margin:0 0 24px;color:#cbd5e1;max-width:620px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;border:1px solid transparent;border-radius:12px;
+      padding:12px 16px;font-weight:700;transition:all var(--speed) ease;cursor:pointer
+    }
+    .btn-primary{background:var(--accent-grad);color:#0b0e13;box-shadow:0 10px 24px rgba(250,170,0,.35)}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-secondary{background:transparent;border-color:rgba(255,255,255,.2);color:#eaf0f6}
+    .btn-secondary:hover{border-color:rgba(255,255,255,.35);transform:translateY(-1px)}
+    .hero-art{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 40%),
+                 linear-gradient(135deg, rgba(247,196,0,.15), rgba(255,138,0,.05));
+      border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:24px;position:relative;isolation:isolate;
+      box-shadow:0 20px 50px rgba(0,0,0,.3);
+    }
+    .hero-art .badge{
+      position:absolute;top:14px;right:14px;background:#0f1318;color:#fff;border:1px solid rgba(255,255,255,.2);
+      padding:6px 10px;border-radius:10px;font-size:.8rem;display:flex;align-items:center;gap:8px
+    }
+    .rig{
+      width:100%;aspect-ratio:4/3;background:#11161d;border-radius:14px;border:1px solid rgba(255,255,255,.14);
+      display:grid;place-items:center;position:relative;overflow:hidden;
+    }
+    .rig:after{
+      content:"";position:absolute;inset:0;background:
+        radial-gradient(500px 200px at 20% 0%, rgba(247,196,0,.18), transparent 60%),
+        radial-gradient(600px 300px at 100% 100%, rgba(255,138,0,.16), transparent 60%);
+      pointer-events:none;
+    }
+    .rig svg{width:78%;max-width:520px}
+    .stats{
+      display:flex;gap:22px;flex-wrap:wrap;margin-top:18px
+    }
+    .stat{
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:10px;color:#e9eff7
+    }
+    .stat b{color:#fff}
+    /* Sections */
+    section{padding:68px 0}
+    .section-title{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:26px
+    }
+    .section-title h3{
+      font-family:Montserrat,Inter,sans-serif;font-size:clamp(22px,2.7vw,34px);margin:0;color:var(--text)
+    }
+    .under{
+      height:6px;background:var(--accent-grad);border-radius:999px;width:80px;box-shadow:0 8px 16px rgba(250,170,0,.25)
+    }
+    /* Who we are */
+    .who{
+      background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+    }
+    .who-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+    .who p{color:var(--text-soft);margin:0 0 10px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line);
+      padding:8px 12px;border-radius:999px;font-weight:600;color:#2a313b
+    }
+    /* Services */
+    .services{background:var(--surface)}
+    .cards{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:18px
+    }
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);
+      transition:transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease; position:relative;overflow:hidden
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 46px rgba(15,19,24,.14);border-color:rgba(247,196,0,.45)}
+    .icon{
+      width:58px;height:58px;border-radius:14px;display:grid;place-items:center;margin-bottom:10px;
+      position:relative;background:linear-gradient(145deg,#fff,#f4f7fa);border:1px solid var(--line)
+    }
+    .icon:after{
+      content:"";position:absolute;inset:-14px;z-index:-1;border-radius:18px;transform:rotate(8deg);
+      background:conic-gradient(from 180deg at 50% 50%, rgba(247,196,0,.2), rgba(255,138,0,.18), rgba(247,196,0,.2));
+      filter:blur(16px);opacity:.7
+    }
+    .card h4{margin:8px 0 6px;font-size:1.05rem}
+    .card p{margin:0;color:#5b6573}
+    .tagline{margin-top:10px;font-size:.92rem;color:#2f3a49}
+    /* Why Choose Us */
+    .why{background:var(--surface-2)}
+    .reasons{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:18px
+    }
+    .reason{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px;box-shadow:var(--shadow);position:relative
+    }
+    .reason:before{
+      content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent-grad);border-top-left-radius:inherit;border-top-right-radius:inherit
+    }
+    .reason h5{margin:8px 0 6px;font-size:1rem}
+    .reason p{margin:0;color:#5b6573}
+    /* Testimonials */
+    .testimonials{background:var(--surface)}
+    .quotes{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+    }
+    .quote{
+      background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden
+    }
+    .quote:before{
+      content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at -10% -10%, rgba(247,196,0,.12), transparent 50%);pointer-events:none
+    }
+    .stars{display:flex;gap:4px;margin-bottom:8px}
+    .q-text{margin:0 0 12px;color:#2e3948}
+    .q-author{font-weight:600}
+    .q-role{font-size:.9rem;color:#6a7382}
+    /* CTA band */
+    .cta-band{
+      background:linear-gradient(120deg,#131a22,#0f1318 60%),
+                 radial-gradient(1000px 300px at 120% -20%, rgba(247,196,0,.18), transparent 60%),
+                 radial-gradient(900px 300px at 0% 120%, rgba(255,138,0,.16), transparent 60%);
+      color:#eaf0f6;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);
+      position:relative;overflow:hidden
+    }
+    .cta-band .row{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .cta-band h4{font-family:Montserrat,Inter,sans-serif;font-size:clamp(20px,2.2vw,28px);margin:0;color:#fff}
+    /* Footer */
+    footer{
+      background:#0f1318;color:#c3cedb;border-top:1px solid rgba(255,255,255,.06)
+    }
+    .footer-grid{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center;padding:22px 0
+    }
+    .foot-left p{margin:8px 0 0;color:#98a6b8}
+    .socials{display:flex;gap:12px}
+    .socials a{
+      width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+      transition:transform var(--speed) ease, background var(--speed) ease
+    }
+    .socials a:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}
+    .foot-meta{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+    .foot-meta a{color:#e9f0f7}
+    .badge-mail{
+      display:inline-flex;align-items:center;gap:8px;background:rgba(247,196,0,.12);color:#ffd978;border:1px solid rgba(247,196,0,.35);
+      padding:8px 12px;border-radius:999px
+    }
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity 540ms ease, transform 540ms ease}
+    .reveal.in-view{opacity:1;transform:none}
+    /* Responsive */
+    @media (max-width:1024px){
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .reasons{grid-template-columns:repeat(2,1fr)}
+      .quotes{grid-template-columns:1fr 1fr}
+      .hero-inner{grid-template-columns:1fr;gap:18px}
+    }
+    @media (max-width:760px){
+      .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);
+        padding:12px 20px;flex-direction:column;align-items:flex-start;gap:10px}
+      .nav-links.open{display:flex}
+      .burger{display:flex}
+      .who-grid{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .reasons{grid-template-columns:1fr}
+      .quotes{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr;gap:10px;text-align:center}
+      .foot-meta{justify-content:center}
+      .stats{gap:12px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <div class="logo-badge" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <path d="M10 44h28a10 10 0 0 0 9.5-6.9l3.6-10.7a3 3 0 0 0-1.9-3.8l-8.7-2.9a3 3 0 0 0-2.6.4l-3.6 2.5-7.4 2.5-5.6 7.2-7.3 2.7A7 7 0 0 0 10 44Z" fill="#111"/>
+            <circle cx="20" cy="47" r="7" fill="#111"/>
+            <circle cx="47" cy="47" r="7" fill="#111"/>
+            <rect x="34" y="12" width="6" height="10" rx="2" fill="#111"/>
+          </svg>
+        </div>
+        <div>
+          <h1>ABC Finance Ltd</h1>
+          <small>Backhoe & Heavy Machinery Rentals</small>
+        </div>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="#who">Who We Are</a>
+        <a href="#services">Services</a>
+        <a href="#why">Why Choose Us</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="mailto:testabc@gmail.com" aria-label="Email us for a quote">Get a Quote</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="kicker">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M4 6h10M4 18h10" stroke="#ffd66b" stroke-width="2" stroke-linecap="round"/></svg>
+            Heavy-Duty Rentals. Zero Hassle.
+          </span>
+          <h2>Backhoe rentals built for the pace of modern projects</h2>
+          <p>From tight urban worksites to open utility corridors, our dependable backhoes and expert support keep your crews productive and safe—delivered when and where you need them.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:testabc@gmail.com">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" stroke="#0b0e13" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="#0b0e13" stroke-width="2"/></svg>
+              Request Availability
+            </a>
+            <a class="btn btn-secondary" href="#services">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#eaf0f6" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#eaf0f6" stroke-width="2" stroke-linecap="round"/></svg>
+              View Services
+            </a>
+          </div>
+          <div class="stats" aria-label="Service highlights">
+            <div class="stat">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12M12 6v12" stroke="#ffd66b" stroke-width="2" stroke-linecap="round"/></svg>
+              <span><b>Flexible terms</b> daily, weekly, monthly</span>
+            </div>
+            <div class="stat">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#ffd66b" stroke-width="2" stroke-linecap="round"/></svg>
+              <span><b>On‑site delivery</b> to your schedule</span>
+            </div>
+            <div class="stat">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 8v4l3 3" stroke="#ffd66b" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#ffd66b" stroke-width="2"/></svg>
+              <span><b>Rapid support</b> when it matters</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Stylized construction graphic">
+          <div class="badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z" stroke="#ffd66b" stroke-width="1.6" fill="none"/></svg>
+            Trusted by field crews
+          </div>
+          <div class="rig" role="img" aria-label="Illustration of a backhoe excavator">
+            <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="y" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffd45a"/><stop offset="1" stop-color="#ff8a00"/>
+                </linearGradient>
+              </defs>
+              <g transform="translate(40,30)">
+                <rect x="20" y="240" width="520" height="120" rx="26" fill="url(#y)" stroke="#1a1f26" stroke-width="6"/>
+                <rect x="120" y="160" width="160" height="90" rx="18" fill="#12161d" stroke="#202732" stroke-width="6"/>
+                <rect x="280" y="180" width="80" height="50" rx="10" fill="#12161d" stroke="#202732" stroke-width="6"/>
+                <circle cx="200" cy="380" r="54" fill="#12161d" stroke="#202732" stroke-width="12"/>
+                <circle cx="200" cy="380" r="24" fill="#262e39"/>
+                <circle cx="480" cy="380" r="54" fill="#12161d" stroke="#202732" stroke-width="12"/>
+                <circle cx="480" cy="380" r="24" fill="#262e39"/>
+                <g transform="translate(420,40)">
+                  <rect x="0" y="0" width="24" height="90" rx="10" fill="#ffd45a" stroke="#202732" stroke-width="6"/>
+                  <rect x="18" y="80" width="140" height="28" rx="10" fill="#ffd45a" stroke="#202732" stroke-width="6"/>
+                  <rect x="150" y="62" width="160" height="24" rx="10" fill="#ffd45a" stroke="#202732" stroke-width="6"/>
+                  <rect x="294" y="46" width="52" height="48" rx="10" fill="#ffd45a" stroke="#202732" stroke-width="6"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="tagline">Engineered for productivity • Ready for tough terrains</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="who" class="who">
+      <div class="container">
+        <div class="section-title">
+          <h3>Who We Are</h3>
+          <div class="under" aria-hidden="true"></div>
+        </div>
+        <div class="who-grid reveal">
+          <div>
+            <p>ABC Finance Ltd is a specialist in backhoe and heavy machinery rentals for construction, utilities, and landscaping teams. We blend robust equipment with responsive service—so your crews can tackle excavation, trenching, and material handling without delay.</p>
+            <p>Our approach is simple: reliable machines, transparent pricing, and people who know jobsites. From first quote to off‑hire, we make rentals straightforward and dependable.</p>
+          </div>
+          <div>
+            <span class="pill">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12l2 2 4-4" stroke="#2fbf71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Safety‑first operations
+            </span>
+            <span class="pill" style="margin-left:8px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#1f2937" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#1f2937" stroke-width="2" stroke-linecap="round"/></svg>
+              Rapid delivery windows
+            </span>
+            <p style="margin-top:12px;color:#5b6573">Every rental includes proactive support, clear documentation, and the option for certified operators when you need a turnkey crew.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h3>Services</h3>
+          <div class="under" aria-hidden="true"></div>
+        </div>
+        <div class="cards">
+          <article class="card reveal" aria-labelledby="svc1">
+            <div class="icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
+                <path d="M8 44h30a10 10 0 0 0 9-6l3-9a3 3 0 0 0-1.8-3.7l-8-2.7a3 3 0 0 0-2.5.4l-3.4 2.3-7 2.3-5.3 6.8-7 2.5A7 7 0 0 0 8 44Z" fill="#ffb703" stroke="#1b2430" stroke-width="2"/>
+                <circle cx="19" cy="48" r="7" fill="#1b2430"/><circle cx="46" cy="48" r="7" fill="#1b2430"/>
+              </svg>
+            </div>
+            <h4 id="svc1">Backhoe Rentals</h4>
+            <p>Modern, job‑ready backhoes for excavation, trenching, and loading. Flexible daily, weekly, and monthly terms.</p>
+          </article>
+          <article class="card reveal" aria-labelledby="svc2">
+            <div class="icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
+                <path d="M6 40h46l6 8H6z" fill="#ffb703" stroke="#1b2430" stroke-width="2"/>
+                <rect x="10" y="26" width="36" height="14" rx="4" fill="#ffb703" stroke="#1b2430" stroke-width="2"/>
+                <circle cx="18" cy="50" r="6" fill="#1b2430"/><circle cx="48" cy="50" r="6" fill="#1b2430"/>
+              </svg>
+            </div>
+            <h4 id="svc2">On‑Site Delivery & Pickup</h4>
+            <p>Coordinated logistics to match your mobilization schedule, minimizing downtime between phases.</p>
+          </article>
+          <article class="card reveal" aria-labelledby="svc3">
+            <div class="icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
+                <circle cx="24" cy="24" r="14" fill="#ffb703" stroke="#1b2430" stroke-width="2"/>
+                <path d="M24 15v10l6 3" stroke="#1b2430" stroke-width="3" stroke-linecap="round"/>
+                <rect x="36" y="34" width="18" height="12" rx="4" fill="#ffb703" stroke="#1b2430" stroke-width="2"/>
+              </svg>
+            </div>
+            <h4 id="svc3">Certified Operators</h4>
+            <p>Skilled, safety‑focused operators available to accelerate production and ensure site compliance.</p>
+          </article>
+          <article class="card reveal" aria-labelledby="svc4">
+            <div class="icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
+                <circle cx="24" cy="24" r="10" fill="#ffb703" stroke="#1b2430" stroke-width="2"/>
+                <path d="M22 20h4v8h-4z" fill="#1b2430"/><path d="M20 28h8" stroke="#1b2430" stroke-width="2"/>
+                <path d="M40 16l10 10-10 10" stroke="#1b2430" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h4 id="svc4">Maintenance & Support</h4>
+            <p>Proactive checks, fast swap‑outs, and responsive field support to keep your project moving.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="why">
+      <div class="container">
+        <div class="section-title">
+          <h3>Why Choose Us</h3>
+          <div class="under" aria-hidden="true"></div>
+        </div>
+        <div class="reasons">
+          <div class="reason reveal">
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.6 5.2L20 8l-4 4 .8 6L12 16l-4.8 2L8 12 4 8l5.4-.8L12 2z" stroke="#f5a300" stroke-width="1.6"/></svg>
+              <h5>Reliable Fleet</h5>
+            </div>
+            <p>Well‑maintained machines, inspected before every hire for consistent performance on site.</p>
+          </div>
+          <div class="reason reveal">
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#f5a300" stroke-width="2" stroke-linecap="round"/></svg>
+              <h5>Transparent Pricing</h5>
+            </div>
+            <p>Clear rates and terms with no surprises—get exactly what you need within budget.</p>
+          </div>
+          <div class="reason reveal">
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#f5a300" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#f5a300" stroke-width="2" stroke-linecap="round"/></svg>
+              <h5>Rapid Delivery</h5>
+            </div>
+            <p>Coordinated drop‑offs that align with mobilization and utility shutdown windows.</p>
+          </div>
+          <div class="reason reveal">
+            <div style="display:flex;align-items:center;gap:10px">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3 8-8 10C7 20 4 17 4 12V6l8-4z" stroke="#f5a300" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="#2fbf71" stroke-width="2" stroke-linecap="round"/></svg>
+              <h5>Safety‑First Culture</h5>
+            </div>
+            <p>Best‑practice procedures, PPE policies, and optional certified operators for compliance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h3>Testimonials</h3>
+          <div class="under" aria-hidden="true"></div>
+        </div>
+        <div class="quotes">
+          <figure class="quote reveal">
+            <div class="stars" aria-label="5 star rating">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+            </div>
+            <blockquote class="q-text">Great communication and well‑maintained machines. Delivery lined up perfectly with our trenching window.</blockquote>
+            <figcaption><span class="q-author">Jordan P.</span> <span class="q-role">Project Manager — Commercial Construction</span></figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="stars" aria-label="5 star rating">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+            </div>
+            <blockquote class="q-text">Operator knew exactly how to stage material and minimize traffic control. Saved us hours each day.</blockquote>
+            <figcaption><span class="q-author">R. Singh</span> <span class="q-role">Utilities Coordinator</span></figcaption>
+          </figure>
+          <figure class="quote reveal">
+            <div class="stars" aria-label="5 star rating">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffcc4d" aria-hidden="true"><path d="M12 2l2.4 6.7L22 9l-5 4.5L18 21l-6-3.6L6 21l1-7.5L2 9l7.6-.3L12 2z"/></svg>
+            </div>
+            <blockquote class="q-text">Straightforward pricing and fast turnaround on paperwork. Exactly what small contractors need.</blockquote>
+            <figcaption><span class="q-author">Maya L.</span> <span class="q-role">Owner — Landscaping Business</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" id="contact">
+      <div class="container row">
+        <h4>Ready to schedule your backhoe rental?</h4>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:testabc@gmail.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" stroke="#0b0e13" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="#0b0e13" stroke-width="2"/></svg>
+            Email testabc@gmail.com
+          </a>
+          <a class="btn btn-secondary" href="#services">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="#eaf0f6" stroke-width="2" stroke-linecap="round"/></svg>
+            Explore services
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container footer-grid">
+      <div class="foot-left">
+        <div class="brand" style="gap:10px">
+          <div class="logo-badge" aria-hidden="true" style="width:36px;height:36px;border-radius:10px">
+            <svg width="22" height="22" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <path d="M10 44h28a10 10 0 0 0 9.5-6.9l3.6-10.7a3 3 0 0 0-1.9-3.8l-8.7-2.9a3 3 0 0 0-2.6.4l-3.6 2.5-7.4 2.5-5.6 7.2-7.3 2.7A7 7 0 0 0 10 44Z" fill="#111"/>
+            </svg>
+          </div>
+          <div>
+            <strong style="color:#fff">ABC Finance Ltd</strong>
+            <div style="font-size:.85rem;color:#9fb0c6">Backhoe & Heavy Machinery Rentals</div>
+          </div>
+        </div>
+        <p>© 2026 ABC Finance Ltd. All rights reserved.</p>
+      </div>
+      <div class="foot-meta">
+        <a class="badge-mail" href="mailto:testabc@gmail.com" aria-label="Email ABC Finance Ltd">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" stroke="#ffd66b" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="#ffd66b" stroke-width="2"/></svg>
+          testabc@gmail.com
+        </a>
+        <div class="socials" aria-label="Social links">
+          <a href="#" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#eaf0f6" aria-hidden="true"><path d="M4 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM3 8h2.9v13H3zM10 8h2.8v1.8h.1c.4-.8 1.5-1.8 3.1-1.8 3.3 0 3.9 2.1 3.9 4.9V21H17V13.7c0-1.7 0-3.8-2.3-3.8-2.3 0-2.6 1.8-2.6 3.7V21H10z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#eaf0f6" aria-hidden="true"><path d="M13 10h3V7h-3c-1.7 0-3 1.3-3 3v2H8v3h2v6h3v-6h2.5l.5-3H13v-2c0-.6.4-1 1-1z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#eaf0f6" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm5 4a6 6 0 1 0 .001 12.001A6 6 0 0 0 12 7zm7-.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM12 9a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    (function(){
+      var burger = document.getElementById('burger');
+      var nav = document.getElementById('nav-links');
+      if(burger && nav){
+        burger.addEventListener('click', function(){
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('open');
+        });
+        // Close on link click (mobile)
+        nav.querySelectorAll('a').forEach(function(a){
+          a.addEventListener('click', function(){ nav.classList.remove('open'); burger.setAttribute('aria-expanded','false'); });
+        });
+      }
+    })();
+    // Smooth scroll for in-page anchors
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href^="#"]');
+      if(a && a.getAttribute('href').length > 1){
+        var id = a.getAttribute('href').slice(1);
+        var el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      }
+    });
+    // Reveal on scroll
+    (function(){
+      var items = document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window)){ items.forEach(function(i){i.classList.add('in-view')}); return; }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {rootMargin:'0px 0px -10% 0px', threshold:0.12});
+      items.forEach(function(i){ io.observe(i); });
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"ABC Finance Ltd",
+    "description":"Backhoe and heavy machinery rentals with rapid delivery, certified operators, and transparent pricing.",
+    "email":"testabc@gmail.com",
+    "url":"https://example.com",
+    "areaServed":"Local",
+    "sameAs":[
+      "https://www.linkedin.com/",
+      "https://www.facebook.com/",
+      "https://www.instagram.com/"
+    ],
+    "makesOffer":[
+      {"@type":"Offer","name":"Backhoe Rentals"},
+      {"@type":"Offer","name":"On-Site Delivery & Pickup"},
+      {"@type":"Offer","name":"Certified Operators"},
+      {"@type":"Offer","name":"Maintenance & Support"}
+    ]
+  }
+  </script>
+</body>
+</html>
