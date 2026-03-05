@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Company Landing Pages</title>
+  <meta name="description" content="Discover premium brands and services. Explore our modern landing pages with services, galleries, and testimonials." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Company Landing Pages" />
+  <meta property="og:description" content="Discover premium brands and services. Explore our modern landing pages with services, galleries, and testimonials." />
+  <meta property="og:image" content="" />
+  <meta name="theme-color" content="#6f4e37" />
+  <style>
+    :root{
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 4px 14px rgba(0,0,0,.08);
+      --shadow-md: 0 10px 30px rgba(0,0,0,.14);
+      --shadow-lg: 0 24px 60px rgba(0,0,0,.18);
+      --transition-fast: .2s ease;
+      --transition: .35s ease;
+      --transition-slow: .6s ease;
+      --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    /* Global reset */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: var(--font-sans);
+      color: var(--text, #1c1c1c);
+      background: var(--page-bg, #ffffff);
+      line-height:1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{
+      width:min(1200px, 92vw);
+      margin:0 auto;
+    }
+
+    /* Company theming wrapper */
+    .company-section{
+      --brand-primary: #1b5ef5;
+      --brand-accent: #f59f00;
+      --brand-contrast: #ffffff;
+      --bg-soft: #f7f7fa;
+      --bg-card: #ffffff;
+      --text: #1e1e1e;
+      --text-soft: #6b6b6b;
+      --ring: rgba(0,0,0,.08);
+      --page-bg: #ffffff;
+      background: var(--page-bg);
+      border-top: 12px solid color-mix(in oklab, var(--brand-primary) 30%, #0000);
+    }
+
+    /* Header */
+    .site-header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 0; gap:18px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:14px;
+    }
+    .brand .logo{
+      width:44px;height:44px;object-fit:cover;border-radius:10px;
+      box-shadow: var(--shadow-sm);
+      background:#fff;
+    }
+    .brand .name-wrap{
+      display:flex;flex-direction:column;
+    }
+    .brand .company-name{
+      font-weight:800;letter-spacing:.2px;
+      font-size:1.15rem;
+    }
+    .industry-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:.78rem;color:var(--brand-primary);background: color-mix(in oklab, var(--brand-primary) 10%, #fff);
+      padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab, var(--brand-primary) 25%, #fff);
+    }
+    .header-actions{
+      display:flex;align-items:center;gap:10px;
+    }
+    .pill{
+      border:1px solid var(--ring);padding:8px 12px;border-radius:999px;font-size:.9rem;color:var(--text-soft);background:#fff;
+    }
+    .cta{
+      background:var(--brand-primary);color:#fff;border:none;border-radius:999px;
+      padding:10px 16px;font-weight:700;box-shadow: 0 8px 24px color-mix(in oklab, var(--brand-primary) 30%, #0000);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor:pointer;
+    }
+    .cta:hover{transform:translateY(-1px);box-shadow: var(--shadow-md);}
+
+    /* Hero */
+    .hero{
+      position:relative; border-radius: var(--radius-lg);
+      overflow:hidden; min-height: 58vh; display:grid; place-items:center; margin:8px 0 26px;
+      background:#111;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:0;
+      background: radial-gradient(1200px 800px at 20% 0%, color-mix(in oklab, var(--brand-primary) 22%, #0000), transparent),
+                  linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.25) 30%, rgba(0,0,0,.55));
+      z-index:1;
+    }
+    .hero-bg{
+      position:absolute; inset:0; background-size:cover;background-position:center; transform:scale(1.05);
+      filter: saturate(1.05) contrast(1.02) brightness(.95);
+      transition: transform var(--transition-slow);
+    }
+    .hero:hover .hero-bg{transform:scale(1.08)}
+    .hero-content{
+      position:relative; z-index:2; text-align:center; color:#fff; padding:36px 22px; max-width:min(920px, 92vw);
+      text-shadow: 0 4px 24px rgba(0,0,0,.55);
+    }
+    .hero h1{
+      margin:0 0 12px; font-size: clamp(2rem, 5vw, 3rem); line-height:1.1;
+      letter-spacing:.2px;
+    }
+    .hero p{
+      margin:0 auto 20px; font-size: clamp(1rem, 2.4vw, 1.2rem); color: #f3efe9;
+    }
+    .hero-actions{
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px; padding:12px 18px; border-radius:12px; border:1px solid transparent;
+      background: var(--brand-accent); color: #1b120c; font-weight: 700; cursor:pointer;
+      box-shadow: 0 10px 30px color-mix(in oklab, var(--brand-accent) 28%, #0000);
+      transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+    }
+    .btn:hover{transform: translateY(-2px); filter: brightness(1.02); box-shadow: var(--shadow-md);}
+    .btn.secondary{
+      background: color-mix(in oklab, var(--brand-primary) 10%, #fff);
+      color: var(--brand-primary);
+      border-color: color-mix(in oklab, var(--brand-primary) 30%, #fff);
+      box-shadow:none; font-weight:700;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px; font-size:.85rem; color:#fff; opacity:.9; margin-bottom:8px;
+      background: color-mix(in oklab, var(--brand-primary) 35%, #0000);
+      padding:6px 10px; border-radius:999px; border:1px solid color-mix(in oklab, #fff 18%, #0000);
+    }
+
+    /* Sections */
+    section.block{
+      margin: 42px 0;
+    }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:16px;
+    }
+    .section-head h2{
+      margin:0; font-size: clamp(1.4rem, 3.5vw, 2rem);
+    }
+    .section-sub{
+      margin:0; color: var(--text-soft); font-size:.98rem;
+    }
+
+    /* Who We Are */
+    .about{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:22px;
+      background: var(--bg-soft); padding:24px; border-radius: var(--radius-lg);
+    }
+    .about .panel{
+      background: var(--bg-card); border:1px solid var(--ring); border-radius: var(--radius-md); padding:22px;
+      box-shadow: var(--shadow-sm);
+    }
+    .about .bullets{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:10px;}
+    .chip{
+      background: color-mix(in oklab, var(--brand-primary) 10%, #fff);
+      border:1px solid color-mix(in oklab, var(--brand-primary) 22%, #fff);
+      padding:10px 12px; border-radius:10px; font-size:.95rem;
+      display:flex; align-items:center; gap:8px;
+    }
+
+    /* Services */
+    .cards{
+      display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:16px;
+    }
+    .card{
+      background: var(--bg-card); border:1px solid var(--ring); padding:18px; border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position:relative; overflow:hidden;
+    }
+    .card:hover{ transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: color-mix(in oklab, var(--brand-primary) 24%, var(--ring));}
+    .card-icon{
+      width:44px;height:44px;display:grid;place-items:center;border-radius:12px;margin-bottom:12px;
+      background: color-mix(in oklab, var(--brand-primary) 14%, #fff);
+      border:1px solid color-mix(in oklab, var(--brand-primary) 26%, #fff);
+    }
+    .card h3{margin:6px 0 8px; font-size:1.05rem}
+    .card p{margin:0; color: var(--text-soft); font-size:.96rem}
+
+    /* Why Choose Us */
+    .why-grid{
+      display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:14px;
+    }
+    .why{
+      background: linear-gradient(180deg, #fff, color-mix(in oklab, var(--brand-primary) 6%, #fff));
+      border:1px solid var(--ring); border-radius: var(--radius-md); padding:18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .why strong{display:block; margin-bottom:6px}
+
+    /* Gallery */
+    .masonry{
+      columns: 4 240px; column-gap: 12px;
+    }
+    .masonry figure{
+      break-inside: avoid; margin:0 0 12px; position:relative; overflow:hidden; border-radius:14px; box-shadow: var(--shadow-sm); border:1px solid var(--ring);
+      cursor: zoom-in;
+    }
+    .masonry img{ width:100%; height:auto; display:block; transition: transform var(--transition), filter var(--transition);}
+    .masonry figure:hover img{ transform: scale(1.04); filter: saturate(1.05);}
+    .masonry figcaption{
+      position:absolute; left:8px; bottom:8px; background: rgba(0,0,0,.5); color:#fff; padding:6px 10px; border-radius:999px; font-size:.78rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Testimonials */
+    .testimonials{
+      display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:14px;
+    }
+    .quote{
+      background: var(--bg-card); border:1px solid var(--ring); padding:18px; border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+    .quote p{margin:0 0 10px}
+    .quote .author{font-weight:700}
+    .stars{color: #f59f00}
+
+    /* Footer */
+    .site-footer{
+      margin-top: 34px; padding: 24px; border-top:1px solid var(--ring);
+      background: linear-gradient(180deg, #fff, color-mix(in oklab, var(--brand-primary) 6%, #fff));
+      border-radius: var(--radius-lg);
+    }
+    .footer-grid{
+      display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap:16px; align-items:start;
+    }
+    .socials{display:flex; gap:10px; margin-top:8px;}
+    .socials a{
+      width:36px;height:36px;border-radius:999px;display:grid;place-items:center;background:#fff;border:1px solid var(--ring);
+      transition: transform var(--transition), background var(--transition), border-color var(--transition);
+    }
+    .socials a:hover{ transform: translateY(-2px); background: color-mix(in oklab, var(--brand-primary) 10%, #fff); border-color: color-mix(in oklab, var(--brand-primary) 25%, #fff);}
+
+    /* Animations - reveal on scroll */
+    .reveal{ opacity:0; transform: translateY(10px); }
+    .reveal.in-view{ opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease; }
+
+    /* Responsive */
+    @media (max-width: 1024px){
+      .cards{grid-template-columns: repeat(2, minmax(0,1fr));}
+      .why-grid{grid-template-columns: repeat(2, minmax(0,1fr));}
+      .testimonials{grid-template-columns: repeat(2, minmax(0,1fr));}
+      .about{grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px){
+      .footer-grid{grid-template-columns: 1fr; gap:10px;}
+      .site-header{flex-wrap:wrap}
+      .brand .company-name{font-size:1.05rem}
+      .pill{display:none}
+      .cta{padding:10px 14px}
+    }
+  </style>
+</head>
+<body>
+
+  <main id="app"></main>
+
+  <!-- Lightbox modal -->
+  <div id="lightbox" aria-hidden="true" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.85);z-index:9999;">
+    <button id="lb-close" aria-label="Close" style="position:absolute;top:14px;right:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;width:42px;height:42px;cursor:pointer;backdrop-filter:blur(6px)">✕</button>
+    <button id="lb-prev" aria-label="Previous image" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:999px;width:46px;height:46px;cursor:pointer">‹</button>
+    <figure style="max-width:min(92vw,1200px);max-height:86vh;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;align-items:center">
+      <img id="lb-img" alt="" src="" style="max-width:100%;max-height:80vh;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.5)">
+      <figcaption id="lb-cap" style="color:#efefef;font-size:.95rem;text-align:center"></figcaption>
+    </figure>
+    <button id="lb-next" aria-label="Next image" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:999px;width:46px;height:46px;cursor:pointer">›</button>
+  </div>
+
+  <script>
+    // Data input (loop-ready). Add more company objects to this array as needed.
+    const companies = [
+      {
+        name: "Zek Coffee",
+        industry: "Coffee",
+        email: "zekTest@gmail.com",
+        description: "Premium coffee shop. Also Sell Package coffee online.",
+        logo: "https://drive.google.com/open?id=1ZQsrWMrLrC1axMDlmXaBRoN4L4b-wDxp",
+        hero: "https://drive.google.com/open?id=1qDe9Acg94LcHkscOGO7MFFQejUkFVoee",
+        gallery: [
+          "https://drive.google.com/open?id=14vXOeRW3Fuqeg3QkWFxYw5blPJPIS_wS",
+          "https://drive.google.com/open?id=1gGtBVgreh-jsR4Adj-pXyXUvCHbyFm28",
+          "https://drive.google.com/open?id=1e_MmETZoD3tjNxSGbmUeJVgq6yIdBBf_",
+          "https://drive.google.com/open?id=15MP7_9xK70Kn3kCUcxaBripB3-0mcs7I"
+        ],
+        socials: {
+          instagram: "#",
+          facebook: "#",
+          twitter: "#",
+          email: "mailto:zekTest@gmail.com"
+        }
+      }
+    ];
+
+    // Utility: Convert Google Drive link to direct image URL
+    function toDirectDriveUrl(url){
+      if(!url) return "";
+      const openId = /open\\?id=([^&]+)/.exec(url);
+      const fileId = /file\\/d\\/([^/]+)/.exec(url);
+      const id = openId?.[1] || fileId?.[1] || "";
+      return id ? `https://drive.google.com/uc?export=view&id=${id}` : url;
+    }
+
+    // Industry-based theming
+    function themeForIndustry(industry){
+      const key = (industry || "").toLowerCase();
+      if(key.includes("coffee") || key.includes("cafe") || key.includes("food")){
+        return {
+          primary: "#6f4e37",   // rich coffee brown
+          accent:  "#d3a46f",   // latte caramel
+          contrast:"#ffffff",
+          bg:      "#fffaf5",   // warm creamy background
+          soft:    "#f6efe6",
+          text:    "#27170f",
+          textSoft:"#6a564a"
+        };
+      }
+      if(key.includes("tech")){
+        return {primary:"#4452ff", accent:"#00d4ff", contrast:"#fff", bg:"#fbfcff", soft:"#f2f5ff", text:"#0f172a", textSoft:"#596080"};
+      }
+      if(key.includes("health")){
+        return {primary:"#15a362", accent:"#74d68c", contrast:"#fff", bg:"#f7fffb", soft:"#ecfbf3", text:"#102a1f", textSoft:"#51705f"};
+      }
+      if(key.includes("finance")){
+        return {primary:"#1f6feb", accent:"#f2b705", contrast:"#fff", bg:"#fbfdff", soft:"#eef4ff", text:"#0e1525", textSoft:"#5b667e"};
+      }
+      // default
+      return {primary:"#1b5ef5", accent:"#f59f00", contrast:"#fff", bg:"#ffffff", soft:"#f7f7fa", text:"#1e1e1e", textSoft:"#6b6b6b"};
+    }
+
+    // SVG Icons (inline strings)
+    const icons = {
+      cup: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 8h2a3 3 0 1 1 0 6h-2" stroke="currentColor" stroke-width="1.5"/><path d="M4 8h14v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Z" stroke="currentColor" stroke-width="1.5"/><path d="M9 4s-.5 1 .5 2-1 2-.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 4s-.5 1 .5 2-1 2-.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+      bean: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12.5 3c3 0 6.5 2.5 6.5 7.5S16 21 12 21 5 18.5 5 13.5 9.5 3 12.5 3Z" stroke="currentColor" stroke-width="1.5"/><path d="M9 10s3 0 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>',
+      bag: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Z" stroke="currentColor" stroke-width="1.5"/><path d="M9 8V6a3 3 0 1 1 6 0v2" stroke="currentColor" stroke-width="1.5"/></svg>',
+      event: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3v3M17 3v3M3 9h18" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="6" width="18" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>',
+      check: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      star: '<svg width="18" height="18" viewBox="0 0 24 24" fill="#f59f00" aria-hidden="true"><path d="m12 17.27 6.18 3.73-1.64-7.03L21.5 9.24l-7.19-.61L12 2 9.69 8.63 2.5 9.24l4.96 4.73-1.64 7.03L12 17.27z"/></svg>',
+      ig: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm6.5-.25a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"/><circle cx="12" cy="12" r="3.5" fill="#fff"/></svg>',
+      fb: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 22v-8h3l1-4h-4V7a2 2 0 0 1 2-2h2V1h-3a5 5 0 0 0-5 5v4H6v4h3v8h4Z"/></svg>',
+      tw: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 5.8c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.2-.8.5-1.7.9-2.6 1.1A3.9 3.9 0 0 0 12 8.6c0 .3 0 .6.1.9C8.1 9.3 4.7 7.5 2.5 4.7c-.4.6-.6 1.3-.6 2.1 0 1.4.7 2.7 1.9 3.4-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 3.9-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.6 2 2.8 3.8 2.9A7.9 7.9 0 0 1 2 19.5 11.2 11.2 0 0 0 8.1 21c7.6 0 11.7-6.3 11.7-11.7v-.5c.8-.5 1.4-1.2 1.9-2z"/></svg>',
+      mail: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v.4L12 13 2 6.4V6Zm0 3.2V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9.2l-9.4 6.2a2 2 0 0 1-2.2 0L2 9.2Z"/></svg>'
+    };
+
+    function buildCompanySection(company, idx){
+      const t = themeForIndustry(company.industry);
+      const logo = toDirectDriveUrl(company.logo);
+      const hero = toDirectDriveUrl(company.hero);
+      const gallery = (company.gallery || []).map(toDirectDriveUrl);
+      const companyId = `company-${idx}`;
+      const friendlyIndustry = company.industry || "Business";
+
+      const section = document.createElement("section");
+      section.id = companyId;
+      section.className = "company-section";
+      section.style.setProperty('--brand-primary', t.primary);
+      section.style.setProperty('--brand-accent', t.accent);
+      section.style.setProperty('--brand-contrast', t.contrast);
+      section.style.setProperty('--text', t.text);
+      section.style.setProperty('--text-soft', t.textSoft);
+      section.style.setProperty('--bg-soft', t.soft);
+      section.style.setProperty('--bg-card', "#ffffff");
+      section.style.setProperty('--page-bg', t.bg);
+
+      section.innerHTML = `
+        <div class="container">
+          <header class="site-header reveal" aria-label="${company.name} header">
+            <div class="brand">
+              <img class="logo" src="${logo}" alt="${company.name} logo" loading="eager" />
+              <div class="name-wrap">
+                <span class="company-name">${company.name}</span>
+                <span class="industry-badge" aria-label="Industry">${friendlyIndustry}</span>
+              </div>
+            </div>
+            <div class="header-actions">
+              <span class="pill" aria-label="Contact email">${company.email}</span>
+              <button class="cta" data-email="${company.email}" aria-label="Contact ${company.name}">Contact</button>
+            </div>
+          </header>
+
+          <section class="hero reveal" role="img" aria-label="${company.name} hero image and tagline">
+            <div class="hero-bg" style="background-image:url('${hero}');"></div>
+            <div class="hero-content">
+              <div class="kicker">Crafted with care • Since today</div>
+              <h1>${company.name}</h1>
+              <p>${company.description}</p>
+              <div class="hero-actions">
+                <a href="#${companyId}-gallery" class="btn" aria-label="View ${company.name} gallery">Explore Gallery</a>
+                <a href="#${companyId}-services" class="btn secondary" aria-label="View ${company.name} services">Our Services</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" id="${companyId}-about" aria-labelledby="${companyId}-about-h">
+            <div class="section-head">
+              <h2 id="${companyId}-about-h">Who We Are</h2>
+              <p class="section-sub">Get to know ${company.name}</p>
+            </div>
+            <div class="about">
+              <article class="panel">
+                <p>${company.description}</p>
+                <div class="bullets">
+                  <div class="chip" title="Premium beans">${icons.check} Premium beans</div>
+                  <div class="chip" title="Online orders">${icons.check} Online orders</div>
+                  <div class="chip" title="Barista-crafted">${icons.check} Barista-crafted</div>
+                  <div class="chip" title="Cozy ambiance">${icons.check} Cozy ambiance</div>
+                </div>
+              </article>
+              <aside class="panel" aria-label="Quick facts">
+                <strong style="display:block;margin-bottom:10px">Quick Facts</strong>
+                <ul style="margin:0;padding-left:18px;color:var(--text-soft);line-height:1.8">
+                  <li>Industry: ${friendlyIndustry}</li>
+                  <li>Email: <a href="mailto:${company.email}" aria-label="Email ${company.name}">${company.email}</a></li>
+                  <li>Specialty: Artisan roasts & signature drinks</li>
+                  <li>Shop: Freshly roasted packages online</li>
+                </ul>
+              </aside>
+            </div>
+          </section>
+
+          <section class="block" id="${companyId}-services" aria-labelledby="${companyId}-services-h">
+            <div class="section-head">
+              <h2 id="${companyId}-services-h">Our Services</h2>
+              <p class="section-sub">Curated for every coffee lover</p>
+            </div>
+            <div class="cards">
+              <div class="card reveal">
+                <div class="card-icon" aria-hidden="true" style="color: var(--brand-primary)">${icons.cup}</div>
+                <h3>Espresso Bar</h3>
+                <p>Classic espresso, silky lattes, and seasonal specials crafted by expert baristas.</p>
+              </div>
+              <div class="card reveal">
+                <div class="card-icon" aria-hidden="true" style="color: var(--brand-primary)">${icons.bean}</div>
+                <h3>Artisan Roasts</h3>
+                <p>Single-origin and signature blends, roasted to highlight every nuanced note.</p>
+              </div>
+              <div class="card reveal">
+                <div class="card-icon" aria-hidden="true" style="color: var(--brand-primary)">${icons.bag}</div>
+                <h3>Online Store</h3>
+                <p>Order freshly packed coffee beans and merchandise delivered to your door.</p>
+              </div>
+              <div class="card reveal">
+                <div class="card-icon" aria-hidden="true" style="color: var(--brand-primary)">${icons.event}</div>
+                <h3>Events & Catering</h3>
+                <p>Elevate your events with mobile espresso bars and brew experiences.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" id="${companyId}-why" aria-labelledby="${companyId}-why-h">
+            <div class="section-head">
+              <h2 id="${companyId}-why-h">Why Choose Us</h2>
+              <p class="section-sub">Quality, consistency, and community</p>
+            </div>
+            <div class="why-grid">
+              <div class="why reveal">
+                <strong>${icons.check} Freshly Roasted</strong>
+                <span style="color:var(--text-soft)">Beans roasted in small batches for peak flavor.</span>
+              </div>
+              <div class="why reveal">
+                <strong>${icons.check} Ethically Sourced</strong>
+                <span style="color:var(--text-soft)">Transparent relationships with trusted growers.</span>
+              </div>
+              <div class="why reveal">
+                <strong>${icons.check} Barista Expertise</strong>
+                <span style="color:var(--text-soft)">Trained team perfecting every cup.</span>
+              </div>
+              <div class="why reveal">
+                <strong>${icons.check} Fast Delivery</strong>
+                <span style="color:var(--text-soft)">Online orders shipped fresh to your home.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="block" id="${companyId}-gallery" aria-labelledby="${companyId}-gallery-h">
+            <div class="section-head">
+              <h2 id="${companyId}-gallery-h">Gallery</h2>
+              <p class="section-sub">A glimpse into ${company.name}</p>
+            </div>
+            <div class="masonry" role="list" aria-label="${company.name} photo gallery">
+              ${gallery.map((src, i) => `
+                <figure class="reveal" role="listitem">
+                  <img src="${src}" alt="${company.name} gallery image ${i+1}" loading="lazy"
+                       data-company="${idx}" data-index="${i}" />
+                  <figcaption>${company.name} — Gallery ${i+1}</figcaption>
+                </figure>
+              `).join("")}
+            </div>
+          </section>
+
+          <section class="block" id="${companyId}-testimonials" aria-labelledby="${companyId}-testimonials-h">
+            <div class="section-head">
+              <h2 id="${companyId}-testimonials-h">Testimonials</h2>
+              <p class="section-sub">What our customers say</p>
+            </div>
+            <div class="testimonials">
+              <article class="quote reveal" aria-label="testimonial">
+                <div class="stars" aria-hidden="true">${icons.star}${icons.star}${icons.star}${icons.star}${icons.star}</div>
+                <p>Best coffee in town. The aroma, the crema—perfection in every sip!</p>
+                <div class="author">— Alex R.</div>
+              </article>
+              <article class="quote reveal" aria-label="testimonial">
+                <div class="stars" aria-hidden="true">${icons.star}${icons.star}${icons.star}${icons.star}${icons.star}</div>
+                <p>Love their beans at home. Online ordering is smooth and delivery is quick.</p>
+                <div class="author">— Priya S.</div>
+              </article>
+              <article class="quote reveal" aria-label="testimonial">
+                <div class="stars" aria-hidden="true">${icons.star}${icons.star}${icons.star}${icons.star}${icons.star}</div>
+                <p>Friendly baristas and a cozy vibe—my daily ritual now.</p>
+                <div class="author">— Marco D.</div>
+              </article>
+            </div>
+          </section>
+
+          <footer class="site-footer" aria-label="${company.name} footer">
+            <div class="footer-grid">
+              <div>
+                <div class="brand">
+                  <img class="logo" src="${logo}" alt="${company.name} logo small" loading="lazy" />
+                  <div class="name-wrap">
+                    <span class="company-name">${company.name}</span>
+                    <span class="industry-badge">${friendlyIndustry}</span>
+                  </div>
+                </div>
+                <p style="color:var(--text-soft);margin:8px 0 0">Premium coffee, thoughtfully roasted and brewed.</p>
+                <div class="socials" aria-label="Social links">
+                  <a href="${company.socials?.instagram || '#'}" aria-label="${company.name} on Instagram" title="Instagram" style="color:var(--text)">${icons.ig}</a>
+                  <a href="${company.socials?.facebook || '#'}" aria-label="${company.name} on Facebook" title="Facebook" style="color:var(--text)">${icons.fb}</a>
+                  <a href="${company.socials?.twitter || '#'}" aria-label="${company.name} on Twitter" title="Twitter/X" style="color:var(--text)">${icons.tw}</a>
+                  <a href="${company.socials?.email || `mailto:${company.email}`}" aria-label="Email ${company.name}" title="Email" style="color:var(--text)">${icons.mail}</a>
+                </div>
+              </div>
+              <div>
+                <strong>Contact</strong>
+                <p style="margin:8px 0 0;color:var(--text-soft)">Email: <a href="mailto:${company.email}">${company.email}</a></p>
+                <p style="margin:4px 0 0;color:var(--text-soft)">Hours: Mon–Sun, 7am–8pm</p>
+              </div>
+              <div>
+                <strong>Quick Links</strong>
+                <ul style="list-style:none;margin:8px 0 0;padding:0;color:var(--text-soft);line-height:1.9">
+                  <li><a href="#${companyId}-services">Services</a></li>
+                  <li><a href="#${companyId}-gallery">Gallery</a></li>
+                  <li><a href="#${companyId}-testimonials">Testimonials</a></li>
+                </ul>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:16px;color:var(--text-soft);font-size:.9rem">
+              <span>© <span class="year"></span> ${company.name}. All rights reserved.</span>
+              <span>Made with care.</span>
+            </div>
+          </footer>
+        </div>
+      `;
+
+      return section;
+    }
+
+    // Render
+    const app = document.getElementById('app');
+    companies.forEach((c, i) => app.appendChild(buildCompanySection(c, i)));
+
+    // Update global SEO tags based on first company
+    (function updateSEO(){
+      if(!companies.length) return;
+      const c = companies[0];
+      document.title = `${c.name} | ${c.description}`.slice(0, 64);
+      const hero = toDirectDriveUrl(c.hero);
+      const md = document.querySelector('meta[name="description"]');
+      if(md) md.setAttribute('content', `${c.name}: ${c.description}`.slice(0, 155));
+      const ogt = document.querySelector('meta[property="og:title"]');
+      if(ogt) ogt.setAttribute('content', `${c.name} — ${c.industry}`);
+      const ogd = document.querySelector('meta[property="og:description"]');
+      if(ogd) ogd.setAttribute('content', c.description);
+      const ogi = document.querySelector('meta[property="og:image"]');
+      if(ogi) ogi.setAttribute('content', hero);
+      const tc = document.querySelector('meta[name="theme-color"]');
+      if(tc){
+        const t = themeForIndustry(c.industry);
+        tc.setAttribute('content', t.primary);
+      }
+    })();
+
+    // Lightbox for gallery
+    const lightboxEl = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCap = document.getElementById('lb-cap');
+    const lbClose = document.getElementById('lb-close');
+    const lbPrev = document.getElementById('lb-prev');
+    const lbNext = document.getElementById('lb-next');
+
+    let currentCompany = 0;
+    let currentIndex = 0;
+
+    function openLightbox(companyIndex, imageIndex){
+      currentCompany = companyIndex;
+      currentIndex = imageIndex;
+      const comp = companies[currentCompany];
+      const src = toDirectDriveUrl(comp.gallery[imageIndex]);
+      lbImg.src = src;
+      lbImg.alt = `${comp.name} gallery image ${imageIndex+1}`;
+      lbCap.textContent = `${comp.name} — Gallery ${imageIndex+1}`;
+      lightboxEl.style.display = 'flex';
+      lightboxEl.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lightboxEl.style.display = 'none';
+      lightboxEl.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    function showNext(delta){
+      const comp = companies[currentCompany];
+      if(!comp || !comp.gallery || !comp.gallery.length) return;
+      currentIndex = (currentIndex + delta + comp.gallery.length) % comp.gallery.length;
+      const src = toDirectDriveUrl(comp.gallery[currentIndex]);
+      lbImg.src = src;
+      lbImg.alt = `${comp.name} gallery image ${currentIndex+1}`;
+      lbCap.textContent = `${comp.name} — Gallery ${currentIndex+1}`;
+    }
+
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('.masonry img');
+      if(img){
+        const ci = parseInt(img.dataset.company || '0', 10);
+        const ii = parseInt(img.dataset.index || '0', 10);
+        openLightbox(ci, ii);
+      }
+    });
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', () => showNext(-1));
+    lbNext.addEventListener('click', () => showNext(1));
+    lightboxEl.addEventListener('click', (e) => {
+      if(e.target === lightboxEl) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if(lightboxEl.style.display === 'flex'){
+        if(e.key === 'Escape') closeLightbox();
+        if(e.key === 'ArrowRight') showNext(1);
+        if(e.key === 'ArrowLeft') showNext(-1);
+      }
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((ent) => {
+        if(ent.isIntersecting){
+          ent.target.classList.add('in-view');
+          io.unobserve(ent.target);
+        }
+      });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Smooth scroll for internal links
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      const id = a.getAttribute('href');
+      const target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+
+    // Header contact button
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cta[data-email]');
+      if(!btn) return;
+      const email = btn.getAttribute('data-email');
+      window.location.href = `mailto:${email}`;
+    });
+
+    // Current year in footers
+    document.querySelectorAll('.site-footer .year').forEach(el => el.textContent = new Date().getFullYear());
+  </script>
+</body>
+</html>
