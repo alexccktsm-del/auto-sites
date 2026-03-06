@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zek Coffee | Premium Coffee Shop & Online Beans</title>
+  <meta name="description" content="Zek Coffee is a premium coffee shop serving craft beverages and selling freshly roasted packaged coffee online. Discover our brews, beans, and story." />
+  <meta name="keywords" content="Zek Coffee, coffee shop, specialty coffee, espresso, latte, cappuccino, packaged coffee, coffee beans, online coffee" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Zek Coffee | Premium Coffee Shop & Online Beans" />
+  <meta property="og:description" content="Premium coffee shop serving craft beverages and selling freshly roasted packaged coffee online." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./images/hero.jpg" />
+  <meta name="theme-color" content="#4e342e" />
+
+  <style>
+    :root{
+      --bg: #fffdf8;
+      --bg-alt: #f7f2ea;
+      --text: #2b2a28;
+      --muted: #7b6f66;
+      --primary: #4e342e;     /* Roast Brown */
+      --accent: #c28f3c;      /* Caramel */
+      --cream: #efe4d6;       /* Latte Cream */
+      --dark: #2e2a27;        /* Deep Roast */
+      --success: #3a5a40;     /* Coffee Leaf Green */
+      --shadow: 0 10px 25px rgba(0,0,0,0.08);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --space-1: 8px;
+      --space-2: 14px;
+      --space-3: 20px;
+      --space-4: 28px;
+      --space-5: 40px;
+      --space-6: 64px;
+      --font-sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      --font-serif: Georgia,"Times New Roman",serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: var(--font-sans);
+      color: var(--text);
+      background: var(--bg);
+      line-height:1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .container{
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight:600;
+      transition: all .25s ease;
+      cursor:pointer;
+      border: 1px solid transparent;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--primary), #3b2924);
+      color: #fff;
+    }
+    .btn-primary:hover{transform: translateY(-1px); box-shadow: 0 10px 20px rgba(78,52,46,.2)}
+    .btn-ghost{
+      background: transparent;
+      border-color: rgba(255,255,255,.55);
+      color:#fff;
+    }
+    .btn-ghost:hover{background: rgba(255,255,255,.08)}
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index: 1000;
+      background: rgba(255,253,248,.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,.04);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+    }
+    .brand{display:flex; align-items:center; gap: 12px}
+    .brand img{height:44px; width:auto; filter: drop-shadow(0 1px 0 rgba(0,0,0,.05))}
+    .brand .name{font-weight:800; letter-spacing:.5px; color: var(--primary)}
+    nav ul{list-style:none; display:flex; gap: 26px; margin:0; padding:0}
+    nav a{
+      padding: 8px 10px; border-radius: 8px; color: var(--text); font-weight:600; opacity:.9;
+    }
+    nav a:hover{background: var(--cream)}
+    .nav-actions{display:flex; align-items:center; gap:12px}
+    .nav-toggle{
+      display:none; border:none; background:transparent; padding:8px; border-radius:8px; cursor:pointer;
+    }
+    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
+      content:''; display:block; height:2px; width:24px; background: var(--dark); border-radius:2px; transition: .25s;
+    }
+    .nav-toggle span::before{transform: translateY(-7px)}
+    .nav-toggle span::after{transform: translateY(5px)}
+
+    /* Mobile Nav */
+    @media (max-width: 900px){
+      nav{position: fixed; inset: 64px 0 auto 0; background: rgba(255,253,248,.98); padding: 14px 0; display:none; box-shadow: var(--shadow)}
+      nav.open{display:block}
+      nav ul{flex-direction:column; gap:0}
+      nav li{border-bottom:1px dashed rgba(0,0,0,.06)}
+      nav a{display:block; padding:14px 20px}
+      .nav-actions{display:none}
+      .nav-toggle{display:inline-block}
+      .brand .name{font-size: 18px}
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      min-height: 78vh;
+      display:grid; place-items:center;
+      color:#fff;
+      background:
+        linear-gradient(180deg, rgba(46,42,39,.6), rgba(46,42,39,.55)),
+        url('./images/hero.jpg') center/cover no-repeat fixed;
+      overflow:hidden;
+    }
+    .hero::after{
+      content:''; position:absolute; inset:auto -12% -12% -12%;
+      height: 35vh;
+      background: radial-gradient(100% 120% at 50% 0%, rgba(194,143,60,.35), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-content{
+      position:relative; text-align:center; padding: var(--space-6) 0 var(--space-5);
+      animation: fadeUp .9s ease both .1s;
+    }
+    .hero h1{
+      font-family: var(--font-serif);
+      font-size: clamp(40px, 7vw, 72px);
+      letter-spacing:.6px; margin:0 0 10px;
+      text-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .hero p{
+      max-width: 720px; margin: 0 auto var(--space-4);
+      font-size: clamp(16px, 2.2vw, 20px);
+      opacity:.95
+    }
+    .hero-cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+
+    /* Section basics */
+    section{padding: var(--space-6) 0}
+    .section-head{
+      margin-bottom: var(--space-4);
+      display:flex; align-items:flex-end; justify-content:space-between; gap: 20px; flex-wrap:wrap;
+    }
+    .section-head h2{
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.4vw, 38px);
+      color: var(--primary);
+      margin:0;
+    }
+    .section-sub{color: var(--muted); max-width: 720px}
+
+    /* Who We Are */
+    .about{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap: var(--space-5);
+      align-items:center;
+    }
+    .about-card{
+      background: #fff; border:1px solid rgba(0,0,0,.05);
+      border-radius: var(--radius);
+      padding: clamp(20px, 3vw, 34px);
+      box-shadow: var(--shadow);
+    }
+    .about-badge{
+      display:inline-flex; align-items:center; gap:8px;
+      background: var(--cream); color: var(--primary);
+      padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px; letter-spacing:.3px;
+      margin-bottom: 14px;
+    }
+    .about-aside{
+      position:relative; height:100%; min-height: 240px;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(130% 80% at 100% 0%, rgba(194,143,60,.25), transparent 60%),
+        linear-gradient(135deg, #f9f3ea, #efe4d6);
+      display:grid; place-items:center; overflow:hidden;
+      box-shadow: var(--shadow);
+      border:1px solid rgba(0,0,0,.05)
+    }
+    .bean{
+      width: 140px; height: 200px; border-radius: 70px;
+      background: radial-gradient(100% 100% at 30% 20%, #5b3c33, #2e221e);
+      position:relative; transform: rotate(-14deg);
+      box-shadow: inset -10px -12px 14px rgba(0,0,0,.35), 0 30px 50px rgba(78,52,46,.25);
+    }
+    .bean::before{
+      content:''; position:absolute; top: 4%; left: 48%;
+      width: 8px; height: 92%; background: linear-gradient(#1e1613, #3b2a25);
+      border-radius: 999px; filter: blur(.2px);
+    }
+
+    /* Services */
+    .cards{
+      display:grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3);
+    }
+    .card{
+      background:#fff; border: 1px solid rgba(0,0,0,.06); border-radius: var(--radius);
+      padding: 22px; box-shadow: var(--shadow); transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
+      position:relative; overflow:hidden;
+    }
+    .card:hover{transform: translateY(-6px); box-shadow: 0 18px 40px rgba(78,52,46,.15); border-color: rgba(78,52,46,.25)}
+    .icon{
+      width: 48px; height: 48px; border-radius: 12px; display:grid; place-items:center;
+      background: linear-gradient(135deg, var(--accent), #d7a85b); color: #fff; box-shadow: 0 10px 18px rgba(194,143,60,.3); margin-bottom: 12px;
+    }
+    .card h3{margin:6px 0 8px; font-size: 20px; color: var(--primary)}
+    .card p{color: var(--muted); margin:0}
+    .chip{display:inline-block; margin-top: 12px; font-size:12px; background: var(--bg-alt); color: var(--primary); padding:6px 10px; border-radius:999px; font-weight:700}
+
+    /* Why Choose Us */
+    .why-grid{
+      display:grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3);
+    }
+    .why{
+      background: linear-gradient(0deg, #fff, #fff) padding-box, conic-gradient(from 180deg, #d7a85b, #4e342e, #efe4d6) border-box;
+      border: 2px solid transparent; border-radius: var(--radius); padding: 20px;
+      box-shadow: var(--shadow); transition:.25s
+    }
+    .why:hover{transform: translateY(-4px)}
+    .why h4{margin:0 0 8px; color: var(--dark)}
+    .why p{margin:0; color: var(--muted)}
+
+    /* Gallery */
+    .gallery-grid{
+      columns: 1; column-gap: 16px;
+    }
+    .gallery-item{
+      break-inside: avoid; margin-bottom:16px; position:relative; border-radius: 14px; overflow:hidden; cursor: zoom-in;
+      box-shadow: var(--shadow); border:1px solid rgba(0,0,0,.06)
+    }
+    .gallery-item img{width:100%; height:auto; display:block; transition: transform .6s ease, filter .6s ease}
+    .gallery-item:hover img{transform: scale(1.04); filter: saturate(1.08) contrast(1.04)}
+
+    /* Testimonials */
+    .testimonials{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3);
+    }
+    .quote{
+      background:#fff; border:1px solid rgba(0,0,0,.06); border-radius: var(--radius);
+      padding: 22px; box-shadow: var(--shadow); position:relative;
+    }
+    .quote::before{
+      content:'“'; position:absolute; font-size: 80px; line-height:0; color: rgba(194,143,60,.35); top: 26px; left: 16px; pointer-events:none;
+    }
+    .quote p{margin: 12px 0 8px}
+    .quote .author{color: var(--primary); font-weight:800}
+
+    /* Footer */
+    footer{
+      background: #14110f; color: #ddd; padding-top: var(--space-5);
+    }
+    .footer-grid{display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap: var(--space-4)}
+    .foot-brand{display:flex; align-items:center; gap:12px; margin-bottom:10px}
+    .foot-brand img{height:38px}
+    .foot-brand .name{font-weight:800; letter-spacing:.4px; color:#fff}
+    .foot-muted{color:#bcb4ac}
+    .social{display:flex; gap:12px; margin-top: 12px}
+    .social a{
+      width:38px; height:38px; display:grid; place-items:center; border-radius:10px;
+      background: rgba(255,255,255,.06); color:#fff; transition:.25s
+    }
+    .social a:hover{background: rgba(255,255,255,.14); transform: translateY(-2px)}
+    .footer-note{
+      margin-top: var(--space-4);
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 16px 0; font-size: 14px; color:#b6aca3
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position: fixed; inset:0; background: rgba(15,12,10,.85);
+      display:none; align-items:center; justify-content:center; z-index: 2000; padding: 20px;
+    }
+    .lightbox.open{display:flex}
+    .lightbox img{max-width: min(100%, 1080px); max-height: 82vh; border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.5)}
+    .lightbox .close{
+      position: absolute; top: 16px; right: 16px; width:44px; height:44px; border-radius:10px; display:grid; place-items:center;
+      background: rgba(255,255,255,.12); color:#fff; border:none; cursor:pointer; transition:.25s
+    }
+    .lightbox .close:hover{background: rgba(255,255,255,.22)}
+
+    /* Reveal Animations */
+    .reveal{opacity:0; transform: translateY(18px); transition: all .6s ease}
+    .reveal.in{opacity:1; transform: translateY(0)}
+    @keyframes fadeUp{from{opacity:0; transform: translateY(20px)} to{opacity:1; transform: translateY(0)}}
+
+    /* Responsive grids */
+    @media (min-width: 620px){
+      .gallery-grid{columns: 2}
+    }
+    @media (min-width: 980px){
+      .gallery-grid{columns: 3}
+    }
+    @media (max-width: 980px){
+      .about{grid-template-columns: 1fr}
+      .cards{grid-template-columns: 1fr 1fr}
+      .why-grid{grid-template-columns: 1fr 1fr}
+      .testimonials{grid-template-columns: 1fr 1fr}
+      .footer-grid{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width: 640px){
+      .cards{grid-template-columns: 1fr}
+      .why-grid{grid-template-columns: 1fr}
+      .testimonials{grid-template-columns: 1fr}
+      .footer-grid{grid-template-columns: 1fr}
+      .hero{min-height: 70vh; background-attachment: scroll}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Zek Coffee Home">
+        <img src="./images/logo.png" alt="Zek Coffee logo">
+        <span class="name">Zek Coffee</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="site-nav" aria-expanded="false">
+        <span></span>
+      </button>
+
+      <nav id="site-nav" role="navigation" aria-label="Primary">
+        <ul>
+          <li><a href="#who-we-are">Who We Are</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why-choose-us">Why Choose Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#services" class="btn btn-primary">Explore Menu</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top" role="banner" aria-label="Hero">
+    <div class="container hero-content">
+      <h1>Zek Coffee</h1>
+      <p>Premium coffee shop. Also Sell Package coffee online.</p>
+      <div class="hero-cta">
+        <a href="#gallery" class="btn btn-ghost" aria-label="View Gallery">View Gallery</a>
+        <a href="#services" class="btn btn-primary" aria-label="Shop Beans & Drinks">Shop Beans & Drinks</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+  <section id="who-we-are" aria-labelledby="about-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="about-title">Who We Are</h2>
+        <p class="section-sub">Crafted with passion and sourced responsibly—our roasts balance flavor, freshness, and sustainability.</p>
+      </div>
+      <div class="about">
+        <div class="about-card reveal">
+          <div class="about-badge">Coffee Beverage • Est. Passion</div>
+          <h3>Our Story in a Sip</h3>
+          <p>Zek Coffee is a premium coffee shop dedicated to elevating everyday moments with meticulously brewed beverages and freshly roasted beans. We also sell packaged coffee online, delivering café-quality taste straight to your home.</p>
+          <p>From single-origin pour-overs to signature espresso blends, our team curates beans with care and roasts in small batches to preserve nuanced aromas and bold character.</p>
+          <div class="chip">Freshly Roasted • Barista-Crafted</div>
+        </div>
+        <aside class="about-aside reveal" aria-hidden="true">
+          <div class="bean" title="Coffee bean shape decoration"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="services-title">Our Services</h2>
+        <p class="section-sub">From café classics to curated beans, we tailor each experience to how you love your coffee.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 8h11a3 3 0 0 1 0 6h-1" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <path d="M5 6h12v10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V6z" stroke="#fff" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Signature Coffee Bar</h3>
+          <p>Espresso, pour-over, cold brew, and seasonal specials prepared by skilled baristas for consistently exceptional cups.</p>
+          <span class="chip">Dine-in & Takeaway</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon" aria-hidden="true" style="background:linear-gradient(135deg,#3a5a40,#5f8a63)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 17l-2-2 6-6 4 4 6-6 2 2-8 8-4-4-4 4z" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Fresh Beans & Blends</h3>
+          <p>Thoughtfully sourced single-origins and blends, roasted in small batches for peak freshness and flavor complexity.</p>
+          <span class="chip">Whole • Ground</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon" aria-hidden="true" style="background:linear-gradient(135deg,#c28f3c,#9d6f25)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 7h18l-2 10a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3L3 7z" stroke="#fff" stroke-width="2"/>
+              <path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" stroke="#fff" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Online Coffee Store</h3>
+          <p>Order our packaged coffee online for home brewing—choose grind size, delivery frequency, and brew guides.</p>
+          <span class="chip">Nationwide Shipping</span>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon" aria-hidden="true" style="background:linear-gradient(135deg,#4e342e,#2e201c)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 5h16M4 12h16M4 19h16" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Coffee Catering</h3>
+          <p>Pop-up bars and event service with custom menus and professional equipment for memorable coffee moments.</p>
+          <span class="chip">Events & Offices</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why-choose-us" aria-labelledby="why-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="why-title">Why Choose Zek Coffee</h2>
+        <p class="section-sub">We obsess over quality at every step—from farm to roast to cup—so each sip feels like your new favorite.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why reveal">
+          <h4>Carefully Sourced</h4>
+          <p>Direct-trade relationships and traceable origins ensure integrity, fair practices, and standout flavors.</p>
+        </div>
+        <div class="why reveal">
+          <h4>Small-Batch Roasting</h4>
+          <p>Roasted in small batches to highlight terroir and preserve aromatic profiles with remarkable consistency.</p>
+        </div>
+        <div class="why reveal">
+          <h4>Barista Expertise</h4>
+          <p>Our team calibrates daily for dialed-in extractions and reliable deliciousness—every single cup.</p>
+        </div>
+        <div class="why reveal">
+          <h4>Seamless Online Ordering</h4>
+          <p>Order packaged coffee with flexible grind options and quick shipping straight to your doorstep.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" aria-labelledby="gallery-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="gallery-title">Gallery</h2>
+        <p class="section-sub">A glimpse into our brews, beans, and the cozy atmosphere that inspires them.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item reveal">
+          <img src="./images/gallery_1.jpg" alt="Zek Coffee gallery 1">
+        </figure>
+        <figure class="gallery-item reveal">
+          <img src="./images/gallery_2.jpg" alt="Zek Coffee gallery 2">
+        </figure>
+        <figure class="gallery-item reveal">
+          <img src="./images/gallery_3.jpg" alt="Zek Coffee gallery 3">
+        </figure>
+        <figure class="gallery-item reveal">
+          <img src="./images/gallery_4.jpg" alt="Zek Coffee gallery 4">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" aria-labelledby="testimonials-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="testimonials-title">What Guests Are Saying</h2>
+        <p class="section-sub">Real words from happy sippers.</p>
+      </div>
+
+      <div class="testimonials">
+        <blockquote class="quote reveal">
+          <p>The espresso is insanely smooth, and their pour-over lineup rotates with beautiful single origins. My new go-to.</p>
+          <div class="author">— Maya L.</div>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p>Fast shipping and the beans arrive super fresh. The tasting notes on their house blend are spot on.</p>
+          <div class="author">— Daniel K.</div>
+        </blockquote>
+        <blockquote class="quote reveal">
+          <p>Warm, inviting space with baristas who care. You can really taste the difference in every cup.</p>
+          <div class="author">— Priya S.</div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="foot-brand">
+            <img src="./images/logo.png" alt="Zek Coffee logo small">
+            <span class="name">Zek Coffee</span>
+          </div>
+          <p class="foot-muted">Premium coffee shop. Also Sell Package coffee online. From bold espressos to curated beans, we craft moments worth savoring.</p>
+          <div class="social" aria-label="Social media">
+            <a href="#" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff" opacity=".9"/>
+                <circle cx="12" cy="12" r="4" stroke="#fff" opacity=".9"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="#fff" opacity=".9"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M14 9h3V6h-3a4 4 0 0 0-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2a1 1 0 0 1 1-1z" fill="#fff" opacity=".9"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20 7.5c-.6.3-1.3.4-2 .5.7-.4 1.2-1 1.4-1.8-.6.4-1.4.7-2.1.9C16.6 6.4 15.7 6 14.7 6a3.4 3.4 0 0 0-3.4 3.4c0 .3 0 .6.1.8A9.6 9.6 0 0 1 4.6 6.8a3.4 3.4 0 0 0 1 4.6c-.5 0-1-.2-1.4-.4v.1c0 1.6 1.2 3 2.7 3.3-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.7 2.3 3.2 2.3A6.9 6.9 0 0 1 4 19.3a9.7 9.7 0 0 0 5.2 1.5c6.2 0 9.6-5.1 9.6-9.6v-.4c.6-.4 1.2-1 1.6-1.7z" fill="#fff" opacity=".9"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin-top:0;color:#fff">Quick Links</h3>
+          <ul style="list-style:none; padding:0; margin:0; display:grid; gap:10px">
+            <li><a href="#who-we-are" class="foot-muted">Who We Are</a></li>
+            <li><a href="#services" class="foot-muted">Services</a></li>
+            <li><a href="#why-choose-us" class="foot-muted">Why Choose Us</a></li>
+            <li><a href="#gallery" class="foot-muted">Gallery</a></li>
+            <li><a href="#testimonials" class="foot-muted">Testimonials</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="margin-top:0;color:#fff">Get in Touch</h3>
+          <p class="foot-muted">Email: <a href="mailto:zekTest@gmail.com" style="color:#fff">zekTest@gmail.com</a></p>
+          <p class="foot-muted">Hours: Mon–Sun · 7am–7pm</p>
+          <a href="#services" class="btn btn-primary" aria-label="Start an order">Start an Order</a>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+          <span>© <span id="year"></span> Zek Coffee. All rights reserved.</span>
+          <span>Crafted with care • Better beans, better days.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
+    <button class="close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <img src="" alt="Zek Coffee enlarged gallery image">
+  </div>
+
+  <script>
+    // Mobile nav toggle
+    (function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('site-nav');
+      if(!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        toggle.classList.toggle('active');
+      });
+
+      nav.addEventListener('click', (e) => {
+        if(e.target.tagName.toLowerCase() === 'a'){
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded','false');
+          toggle.classList.remove('active');
+        }
+      });
+
+      // Transform burger to X
+      const span = toggle.querySelector('span');
+      toggle.addEventListener('click', () => {
+        if(toggle.classList.contains('active')){
+          span.style.transform = 'rotate(45deg)';
+          span.style.background = 'transparent';
+          span.style.position = 'relative';
+          span.before.style = '';
+          span.after.style = '';
+        } else {
+          span.removeAttribute('style');
+        }
+      });
+    })();
+
+    // Reveal on scroll
+    (function(){
+      const items = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold: .12});
+      items.forEach(el => io.observe(el));
+    })();
+
+    // Lightbox
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const img = lb.querySelector('img');
+      const closeBtn = lb.querySelector('.close');
+
+      document.addEventListener('click', (e) => {
+        const fig = e.target.closest('.gallery-item img');
+        if(fig){
+          img.src = fig.src;
+          img.alt = fig.alt || 'Zek Coffee enlarged gallery image';
+          lb.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+
+      function closeLB(){
+        lb.classList.remove('open');
+        img.src = '';
+        document.body.style.overflow = '';
+      }
+      closeBtn.addEventListener('click', closeLB);
+      lb.addEventListener('click', (e) => { if(e.target === lb) closeLB(); });
+      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLB(); });
+    })();
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Improve in-page link focus on mobile
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const target = document.querySelector(id);
+        if(target){
+          // Allow default smooth scroll; add focus for accessibility
+          setTimeout(()=>{ target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); }, 400);
+        }
+      })
+    });
+  </script>
+
+  <!-- SEO Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CafeOrCoffeeShop",
+      "name": "Zek Coffee",
+      "image": "./images/hero.jpg",
+      "description": "Premium coffee shop. Also Sell Package coffee online.",
+      "email": "zekTest@gmail.com",
+      "servesCuisine": "Coffee, Espresso, Pastries",
+      "priceRange": "$$",
+      "url": "#"
+    }
+  </script>
+</body>
+</html>
