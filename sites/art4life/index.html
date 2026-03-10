@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art4Life — Glowing Art Drawings | England</title>
+  <meta name="description" content="Art4Life creates glowing art drawings and immersive light-inspired pieces. Visit our physical store in England. Explore commissions, workshops, and limited edition prints.">
+  <meta name="keywords" content="Art4Life, glowing art, neon art, light art, art store England, art workshops, art commissions">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0b0b12">
+  <meta property="og:title" content="Art4Life — Glowing Art Drawings | England">
+  <meta property="og:description" content="Glowing art drawings and immersive light-inspired works. Physical store located in England.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./images/hero.jpg">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root{
+      /* Art-inspired neon palette */
+      --bg: #0b0b12;
+      --surface: #121225;
+      --surface-2:#181833;
+      --text: #e9e9f4;
+      --muted:#b6b6c9;
+      --primary: #9A5CFF;  /* electric purple */
+      --secondary:#2EE6DE; /* aqua */
+      --accent:#FF5EA3;    /* magenta */
+      --glow-soft: 0 0 24px rgba(154,92,255,.35), 0 0 48px rgba(46,230,222,.18);
+      --radius: 14px;
+      --radius-sm:10px;
+      --shadow-1: 0 10px 30px rgba(0,0,0,.35);
+      --shadow-2: 0 20px 60px rgba(0,0,0,.45);
+      --grad-1: radial-gradient(1200px 600px at 10% -10%, rgba(154,92,255,.25), transparent 55%),
+                radial-gradient(900px 500px at 100% 10%, rgba(46,230,222,.18), transparent 45%),
+                linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.3));
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+      color:var(--text);
+      background: var(--bg);
+      line-height:1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1200px; margin:0 auto; padding:0 20px}
+    /* Header */
+    .site-header{
+      position:sticky; top:0; z-index:1000;
+      background: rgba(10,10,20,.55);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .brand img{height:40px; width:auto; filter: drop-shadow(0 0 10px rgba(154,92,255,.45))}
+    .brand .name{
+      font-weight:800; letter-spacing:.5px; font-size:1.1rem;
+      text-shadow: 0 0 10px rgba(154,92,255,.45);
+    }
+    .menu{
+      display:flex; gap:24px; align-items:center;
+    }
+    .menu a{
+      font-size:.95rem; color:var(--muted); padding:8px 12px; border-radius:8px;
+      transition: all .25s ease;
+    }
+    .menu a:hover{color:var(--text); background: rgba(154,92,255,.15); box-shadow: var(--glow-soft)}
+    .hamburger{
+      display:none; background:none; border:none; color:var(--text); font-size:1.6rem; cursor:pointer;
+    }
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 18px; border-radius:999px; font-weight:700; letter-spacing:.3px;
+      transition:transform .2s ease, box-shadow .3s ease, background .3s ease, color .3s ease;
+      border:1px solid transparent;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color:#fff; box-shadow: 0 8px 20px rgba(154,92,255,.35);
+    }
+    .btn-primary:hover{transform: translateY(-2px); box-shadow: 0 14px 40px rgba(154,92,255,.45)}
+    .btn-ghost{
+      background: transparent; border-color: rgba(255,255,255,.2); color:var(--text)
+    }
+    .btn-ghost:hover{background: rgba(255,255,255,.06)}
+    /* Hero */
+    .hero{
+      position:relative; min-height:86vh; display:grid; place-items:center; text-align:center;
+      background:
+        var(--grad-1),
+        url('./images/hero.jpg') center/cover no-repeat fixed;
+      isolation:isolate;
+    }
+    .hero::after{
+      content:""; position:absolute; inset:0;
+      background: radial-gradient(700px 280px at 60% 30%, rgba(255,94,163,.15), transparent 60%),
+                  radial-gradient(600px 260px at 40% 70%, rgba(46,230,222,.12), transparent 60%);
+      mix-blend-mode: screen; z-index:0;
+    }
+    .hero-inner{position:relative; z-index:1; padding:80px 0}
+    .hero h1{
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      margin: 0 0 12px;
+      font-weight:900;
+      letter-spacing:1px;
+      text-shadow:
+        0 0 18px rgba(154,92,255,.55),
+        0 0 36px rgba(46,230,222,.35);
+    }
+    .subtitle{
+      max-width:760px; margin:0 auto 28px; color:var(--muted); font-size: clamp(1rem, 1.3vw, 1.2rem)
+    }
+    .hero-ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+    /* Sections */
+    section{padding:72px 0}
+    section.alt{background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.08))}
+    .section-head{
+      text-align:center; margin-bottom:36px;
+    }
+    .section-head h2{
+      margin:0; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing:.4px
+    }
+    .section-head p{margin:10px auto 0; max-width:720px; color:var(--muted)}
+    /* Who we are */
+    .about{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center;
+    }
+    .about-card{
+      background: linear-gradient(180deg, rgba(154,92,255,.06), rgba(46,230,222,.04));
+      padding:28px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.08); box-shadow: var(--shadow-1);
+    }
+    .about-card h3{margin-top:0}
+    .badge{
+      display:inline-block; padding:6px 10px; border-radius: 999px; font-size:.8rem; color:#fff;
+      background: linear-gradient(135deg, var(--secondary), var(--primary)); box-shadow: var(--glow-soft); margin-bottom:12px;
+    }
+    .about-points{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px}
+    .about-points li{
+      list-style:none; padding:10px 12px; background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06);
+      border-radius:10px; color:var(--muted)
+    }
+    /* Services */
+    .services{
+      display:grid; grid-template-columns: repeat(4, 1fr); gap:18px;
+    }
+    .card{
+      background: var(--surface); border: 1px solid rgba(255,255,255,.08);
+      padding:22px; border-radius: var(--radius); box-shadow: var(--shadow-1);
+      transition: transform .2s ease, box-shadow .3s ease, border-color .3s ease;
+      position:relative; overflow:hidden;
+    }
+    .card:hover{transform: translateY(-6px); box-shadow: var(--shadow-2); border-color: rgba(255,255,255,.15)}
+    .card::after{
+      content:""; position:absolute; inset:auto -60% -60% auto; width:140%; height:140%;
+      background: radial-gradient(400px 200px at 80% 20%, rgba(154,92,255,.15), transparent 60%);
+      transform: rotate(15deg);
+    }
+    .icon-wrap{
+      width:54px; height:54px; display:grid; place-items:center; border-radius:14px;
+      background: linear-gradient(135deg, rgba(154,92,255,.25), rgba(46,230,222,.18));
+      border:1px solid rgba(255,255,255,.14); box-shadow: var(--glow-soft); margin-bottom:10px;
+    }
+    .card h3{margin:8px 0 8px; font-size:1.15rem}
+    .card p{color:var(--muted); margin:0}
+    /* Why choose us */
+    .why{
+      display:grid; grid-template-columns: repeat(4,1fr); gap:16px;
+    }
+    .why .reason{
+      background: var(--surface-2); border:1px solid rgba(255,255,255,.1); border-radius: var(--radius-sm);
+      padding:18px; transition: transform .2s ease, background .3s ease;
+    }
+    .why .reason:hover{transform: translateY(-4px); background: rgba(255,255,255,.06)}
+    .reason h4{margin:8px 0 6px}
+    .reason p{margin:0; color:var(--muted)}
+    /* Gallery */
+    .gallery-grid{
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px;
+    }
+    .gallery-item{
+      position:relative; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,.08);
+      background: #0f0f1c;
+    }
+    .gallery-item img{width:100%; height:100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .4s ease, opacity .3s ease}
+    .gallery-item:hover img{transform: scale(1.05); opacity:.95}
+    .gallery-item .overlay{
+      position:absolute; inset:0; background: linear-gradient(180deg, transparent, rgba(0,0,0,.45));
+      opacity:0; transition: opacity .3s ease;
+    }
+    .gallery-item:hover .overlay{opacity:1}
+    /* Lightbox */
+    .lightbox{
+      position:fixed; inset:0; display:none; place-items:center; background: rgba(3,3,10,.8); z-index:2000;
+      padding:24px;
+    }
+    .lightbox.open{display:grid}
+    .lightbox img{max-width: min(100%, 1100px); max-height:80vh; border-radius:12px; box-shadow: var(--shadow-2)}
+    .lightbox .caption{margin-top:10px; color:var(--muted); text-align:center}
+    .lightbox .close{
+      position:absolute; top:16px; right:16px; background: rgba(255,255,255,.1); border:none; color:#fff;
+      width:40px; height:40px; border-radius:50%; font-size:1.2rem; cursor:pointer; backdrop-filter: blur(4px);
+    }
+    /* Testimonials */
+    .testimonials{
+      display:grid; grid-template-columns: repeat(3,1fr); gap:16px;
+    }
+    .quote{
+      background: linear-gradient(180deg, rgba(46,230,222,.06), rgba(154,92,255,.05));
+      border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding:22px; box-shadow: var(--shadow-1)
+    }
+    .quote p{margin:0 0 10px}
+    .stars{color: gold; letter-spacing:2px; margin-bottom:8px}
+    .by{color:var(--muted); font-size:.9rem}
+    /* Footer */
+    footer{
+      background: #0a0a15; border-top:1px solid rgba(255,255,255,.08)
+    }
+    .footer-grid{
+      display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap:18px; padding:34px 0 16px;
+    }
+    .footer-brand img{height:36px}
+    .footer-brand p{color:var(--muted)}
+    .foot-links a{display:block; color:var(--muted); padding:6px 0}
+    .foot-links a:hover{color:var(--text)}
+    .socials{display:flex; gap:10px; margin-top:10px}
+    .socials a{
+      width:38px; height:38px; display:grid; place-items:center; border-radius:50%; border:1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.04)
+    }
+    .copyright{
+      border-top:1px solid rgba(255,255,255,.08); color:var(--muted); font-size:.9rem; padding:12px 0; text-align:center
+    }
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease}
+    .reveal.in{opacity:1; transform: translateY(0)}
+    /* Responsive */
+    @media (max-width: 1024px){
+      .services{grid-template-columns: repeat(2,1fr)}
+      .why{grid-template-columns: repeat(2,1fr)}
+      .about{grid-template-columns: 1fr}
+      .testimonials{grid-template-columns: repeat(2,1fr)}
+      .footer-grid{grid-template-columns: 1fr 1fr}
+    }
+    @media (max-width: 720px){
+      .menu{display:none; position:absolute; right:20px; top:66px; flex-direction:column; background: rgba(12,12,22,.95);
+        border:1px solid rgba(255,255,255,.08); border-radius:12px; width:min(86vw, 360px); padding:10px; box-shadow: var(--shadow-2)}
+      .menu.open{display:flex}
+      .menu a{padding:12px 14px}
+      .hamburger{display:block}
+      .services{grid-template-columns: 1fr}
+      .why{grid-template-columns: 1fr}
+      .testimonials{grid-template-columns: 1fr}
+      .footer-grid{grid-template-columns: 1fr}
+      .hero{min-height:78vh}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Art4Life",
+    "description": "Glowing art drawings with a physical store located in England.",
+    "email": "mailto:art4lifetest@gmail.com",
+    "logo": "./images/logo.png",
+    "sameAs": [],
+    "foundingLocation": "England, United Kingdom"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#home" aria-label="Art4Life home">
+          <img src="./images/logo.png" alt="Art4Life company logo">
+          <span class="name">Art4Life</span>
+        </a>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="navToggle">☰</button>
+        <div class="menu" id="menu">
+          <a href="#home">Home</a>
+          <a href="#about">Who We Are</a>
+          <a href="#services">Services</a>
+          <a href="#why">Why Choose Us</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home" role="region" aria-label="Hero">
+      <div class="hero-inner container">
+        <h1>Art4Life</h1>
+        <p class="subtitle">Glow-forward art that illuminates your world. We specialise in glowing art drawings and light-inspired pieces — visit our physical store in England.</p>
+        <div class="hero-ctas">
+          <a href="#gallery" class="btn btn-primary">Explore Gallery</a>
+          <a href="mailto:art4lifetest@gmail.com" class="btn btn-ghost">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who we are -->
+    <section id="about" class="alt" role="region" aria-label="Who We Are">
+      <div class="container about reveal">
+        <div class="about-card">
+          <span class="badge">Who We Are</span>
+          <h2>Glowing artistry with a human touch</h2>
+          <p>At Art4Life, we craft luminous drawings and light-infused artworks that transform spaces. Our studio and physical store in England welcome art lovers to explore, commission, and learn about the glow that brings art to life.</p>
+          <ul class="about-points">
+            <li>Specialists in neon & glow aesthetics</li>
+            <li>Custom commissions made to order</li>
+            <li>Workshops for all skill levels</li>
+            <li>UK-based store and support</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <h3>Visit Us in England</h3>
+          <p>Experience our pieces in person, see how light interacts with texture, and speak with our artists about bespoke creations for your home, office, or event.</p>
+          <p style="color:var(--muted); margin-top:10px">Email: <a href="mailto:art4lifetest@gmail.com">art4lifetest@gmail.com</a></p>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn btn-primary" href="#services">Our Services</a>
+            <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" role="region" aria-label="Services">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Services Tailored for Art Lovers</h2>
+          <p>From bespoke glowing pieces to hands-on workshops, discover how Art4Life can light up your space.</p>
+        </div>
+        <div class="services">
+          <!-- Service 1 -->
+          <article class="card reveal">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3c-4.97 0-9 3.582-9 8 0 2.07 1.01 3.942 2.65 5.29.52.43.85 1.04.87 1.71l.02 1.45c0 .27.22.55.49.55h1.45c.67.02 1.28.35 1.71.87C11.058 22.99 12.93 24 15 24c4.418 0 8-4.03 8-9 0-5.418-4.03-12-11-12z" fill="url(#g1)"/>
+                <defs><linearGradient id="g1" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#9A5CFF"/><stop offset="1" stop-color="#2EE6DE"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>Custom Glow Commissions</h3>
+            <p>One‑of‑a‑kind glowing drawings designed around your story, palette, and space. Consult, sketch, and final piece — all handled by our studio.</p>
+          </article>
+          <!-- Service 2 -->
+          <article class="card reveal">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2l2.39 4.84 5.34.78-3.86 3.76.91 5.32L12 14.77 6.22 16.7l.91-5.32L3.27 7.62l5.34-.78L12 2z" fill="url(#g2)"/>
+                <defs><linearGradient id="g2" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#2EE6DE"/><stop offset="1" stop-color="#FF5EA3"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>Glow-in-the-Dark Workshops</h3>
+            <p>Hands-on sessions exploring luminous inks and UV-reactive mediums. Suitable for beginners and seasoned creators.</p>
+          </article>
+          <!-- Service 3 -->
+          <article class="card reveal">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="3" width="16" height="14" rx="2" fill="url(#g3)"/>
+                <rect x="6" y="6" width="8" height="2" rx="1" fill="rgba(0,0,0,.4)"/>
+                <rect x="6" y="10" width="12" height="2" rx="1" fill="rgba(0,0,0,.35)"/>
+                <defs><linearGradient id="g3" x1="4" y1="3" x2="20" y2="17"><stop stop-color="#9A5CFF"/><stop offset="1" stop-color="#FF5EA3"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>Limited Edition Prints</h3>
+            <p>Archive-quality prints with radiant finishes and UV accents — numbered, signed, and ready to hang.</p>
+          </article>
+          <!-- Service 4 -->
+          <article class="card reveal">
+            <div class="icon-wrap" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2V10z" fill="url(#g4)"/>
+                <defs><linearGradient id="g4" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#2EE6DE"/><stop offset="1" stop-color="#9A5CFF"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>In‑Store Installations</h3>
+            <p>See glow in action at our England store — curated displays and interactive light experiences to inspire your next piece.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose us -->
+    <section id="why" class="alt" role="region" aria-label="Why Choose Us">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Why Choose Art4Life</h2>
+          <p>Professional craft, premium materials, and a passion for light — all under one roof.</p>
+        </div>
+        <div class="why">
+          <div class="reason reveal">
+            <h4>Handcrafted Quality</h4>
+            <p>Every detail is drawn, layered, and finished by our artists to achieve that signature glow.</p>
+          </div>
+          <div class="reason reveal">
+            <h4>Museum‑Grade Materials</h4>
+            <p>UV-reactive pigments and archival substrates ensure colour fidelity and longevity.</p>
+          </div>
+          <div class="reason reveal">
+            <h4>Collaborative Process</h4>
+            <p>From moodboards to mockups — we co-create with you at each stage.</p>
+          </div>
+          <div class="reason reveal">
+            <h4>UK Storefront</h4>
+            <p>Visit us in England for viewings, pickups, and local support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" role="region" aria-label="Gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>Gallery</h2>
+          <p>Selected glowing artworks from recent collections and commissions.</p>
+        </div>
+        <div class="gallery-grid">
+          <!-- Exactly 4 images generated based on the provided link count -->
+          <a class="gallery-item reveal" href="./images/gallery_1.jpg" data-caption="Art4Life — Gallery piece 1">
+            <img src="./images/gallery_1.jpg" alt="Art4Life gallery image 1">
+            <span class="overlay" aria-hidden="true"></span>
+          </a>
+          <a class="gallery-item reveal" href="./images/gallery_2.jpg" data-caption="Art4Life — Gallery piece 2">
+            <img src="./images/gallery_2.jpg" alt="Art4Life gallery image 2">
+            <span class="overlay" aria-hidden="true"></span>
+          </a>
+          <a class="gallery-item reveal" href="./images/gallery_3.jpg" data-caption="Art4Life — Gallery piece 3">
+            <img src="./images/gallery_3.jpg" alt="Art4Life gallery image 3">
+            <span class="overlay" aria-hidden="true"></span>
+          </a>
+          <a class="gallery-item reveal" href="./images/gallery_4.jpg" data-caption="Art4Life — Gallery piece 4">
+            <img src="./images/gallery_4.jpg" alt="Art4Life gallery image 4">
+            <span class="overlay" aria-hidden="true"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer">
+        <button class="close" id="lbClose" aria-label="Close">✕</button>
+        <img id="lbImg" src="" alt="Art4Life enlarged artwork">
+        <div class="caption" id="lbCap"></div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="alt" role="region" aria-label="Testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>What Collectors Say</h2>
+          <p>Real words from clients who brought glow into their spaces.</p>
+        </div>
+        <div class="testimonials">
+          <div class="quote reveal">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <p>Our commission absolutely transforms the room at night. The glow is subtle yet striking — pure magic.</p>
+            <div class="by">— Amelia R.</div>
+          </div>
+          <div class="quote reveal">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <p>The workshop was friendly, inspiring, and hands-on. I left with techniques I use in my own practice.</p>
+            <div class="by">— Daniel K.</div>
+          </div>
+          <div class="quote reveal">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <p>Superb quality prints and excellent guidance in-store. Can’t wait to add another piece from Art4Life.</p>
+            <div class="by">— Priya S.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <img src="./images/logo.png" alt="Art4Life logo">
+          <span class="name">Art4Life</span>
+        </div>
+        <p>Glow-first drawings and light-infused art. Visit our physical store in England or commission a custom piece.</p>
+      </div>
+      <div class="foot-links">
+        <h3>Quick Links</h3>
+        <a href="#about">Who We Are</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Testimonials</a>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p class="muted">Email: <a href="mailto:art4lifetest@gmail.com">art4lifetest@gmail.com</a></p>
+        <p class="muted">England, United Kingdom</p>
+        <div class="socials" aria-label="Social media">
+          <a href="#" aria-label="Instagram" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="rgba(255,255,255,.8)"/><circle cx="12" cy="12" r="4.2" stroke="rgba(255,255,255,.8)"/><circle cx="17.5" cy="6.5" r="1.2" fill="rgba(255,255,255,.8)"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 8h2V4h-2c-2.2 0-4 1.8-4 4v2H9v4h2v6h4v-6h2l1-4h-3V8c0-.55.45-1 1-1z" fill="rgba(255,255,255,.85)"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter" title="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 5.8c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.2 1.7-2.1-.7.4-1.6.8-2.5 1-1.5-1.5-4.1-1.3-5.4.4-1 1.3-1 3.1-.1 4.4-3.2-.2-6.2-1.7-8.1-4.3-1.1 2-.5 4.6 1.4 5.9-.6 0-1.2-.2-1.8-.5 0 2.1 1.5 4 3.6 4.4-.5.1-1.1.2-1.6.1.5 1.7 2.2 3 4.1 3-1.6 1.3-3.7 2-5.7 1.7 2 1.3 4.3 2 6.7 2 8.1 0 12.5-7 12.2-13.3.8-.6 1.5-1.3 2-2.1z" fill="rgba(255,255,255,.85)"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest" title="Pinterest">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 2 3.5 5.8 3.5 10.3c0 3.3 2 5.1 3.2 5.1.5 0 .8-1.4.8-1.8 0-.5-1.1-1.3-1.1-3.1 0-3.6 2.7-6.1 6.2-6.1 3 0 5.1 1.7 5.1 4.9 0 2.4-1 7-4.3 7-1.2 0-2.1-.9-1.8-2.1.4-1.5 1.2-3 1.2-4 0-.9-.5-1.6-1.6-1.6-1.2 0-2.1 1.2-2.1 2.9 0 1.1.4 1.9.4 1.9l-1.5 6.1c-.4 1.6 0 3.5 0 3.7h1.1c.3-.5 1.8-2.2 2.1-3.6.2-.8.8-2.9.8-2.9.4.8 1.6 1.4 2.9 1.4 3.8 0 6.5-3.6 6.5-8.2C20.5 5.5 16.9 2 12 2z" fill="rgba(255,255,255,.85)"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">
+      <span>© <span id="year"></span> Art4Life. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation toggle
+    (function(){
+      const btn = document.getElementById('navToggle');
+      const menu = document.getElementById('menu');
+      btn.addEventListener('click', ()=>{
+        const open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // Close menu on link click (mobile)
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> {
+        menu.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+      }));
+    })();
+
+    // Lightbox
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbCap = document.getElementById('lbCap');
+      const lbClose = document.getElementById('lbClose');
+
+      function openLB(src, cap){
+        lbImg.src = src;
+        lbCap.textContent = cap || '';
+        lb.classList.add('open');
+        document.body.style.overflow='hidden';
+      }
+      function closeLB(){
+        lb.classList.remove('open');
+        lbImg.src = '';
+        document.body.style.overflow='';
+      }
+      document.querySelectorAll('.gallery-item').forEach(item=>{
+        item.addEventListener('click', e=>{
+          e.preventDefault();
+          openLB(item.getAttribute('href'), item.getAttribute('data-caption'));
+        });
+      });
+      lbClose.addEventListener('click', closeLB);
+      lb.addEventListener('click', e=>{ if(e.target === lb) closeLB(); });
+      window.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLB(); });
+    })();
+
+    // Reveal on scroll
+    (function(){
+      const els = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold:.16});
+      els.forEach(el=> io.observe(el));
+    })();
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
