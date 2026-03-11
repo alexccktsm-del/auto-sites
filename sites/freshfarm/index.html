@@ -1,0 +1,210 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FreshFarm - 100% original and fresh milk production place and farm.">
+    <title>FreshFarm - Milk Production</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #4CAF50;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        h1, h2, h3 {
+            margin: 0;
+            color: #333;
+        }
+        .hero {
+            background: url('./images/hero.jpg') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero p {
+            font-size: 1.2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .service-card {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            flex: 1 1 250px;
+            max-width: 300px;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+        .highlights {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .highlight {
+            background: #f3f3f3;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+            margin: 10px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+        .testimonial {
+            font-style: italic;
+            margin: 20px;
+        }
+        footer {
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="./images/logo.png" alt="FreshFarm Logo">
+    <nav>
+        <a href="#who-we-are">Who We Are</a> |
+        <a href="#services">Services</a> |
+        <a href="#gallery">Gallery</a> |
+        <a href="#testimonials">Testimonials</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>FreshFarm</h1>
+    <p>100% original and fresh milk production place and farm.</p>
+</section>
+
+<section id="who-we-are" class="section">
+    <h2>Who We Are</h2>
+    <p>At FreshFarm, we pride ourselves in producing the highest quality milk straight from our farm to your table. Our commitment to originality and freshness defines who we are.</p>
+</section>
+
+<section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="service-card">
+            <h3>Quality Milk</h3>
+            <p>We produce the purest quality milk sourced directly from our farms.</p>
+        </div>
+        <div class="service-card">
+            <h3>Farm Tours</h3>
+            <p>Join us for educational tours of our farm and production process.</p>
+        </div>
+        <div class="service-card">
+            <h3>Organic Products</h3>
+            <p>Explore our range of organic dairy products tailored for your health.</p>
+        </div>
+        <div class="service-card">
+            <h3>Delivery Services</h3>
+            <p>We offer home delivery for our products ensuring freshness and convenience.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Why Choose Us</h2>
+    <div class="highlights">
+        <div class="highlight">
+            <h3>100% Organic</h3>
+            <p>Our milk is completely organic, ensuring the healthiest choice for you and your family.</p>
+        </div>
+        <div class="highlight">
+            <h3>Sustainable Farming</h3>
+            <p>We use sustainable practices to ensure minimal impact on the environment.</p>
+        </div>
+        <div class="highlight">
+            <h3>Community Support</h3>
+            <p>Supporting local farmers and community initiatives is at the heart of FreshFarm.</p>
+        </div>
+    </div>
+</section>
+
+<section id="gallery" class="section">
+    <h2>Gallery</h2>
+    <div class="gallery">
+        <img src="./images/gallery_1.jpg" alt="FreshFarm Gallery Image 1">
+        <img src="./images/gallery_2.jpg" alt="FreshFarm Gallery Image 2">
+        <img src="./images/gallery_3.jpg" alt="FreshFarm Gallery Image 3">
+        <img src="./images/gallery_4.jpg" alt="FreshFarm Gallery Image 4">
+        <img src="./images/gallery_5.jpg" alt="FreshFarm Gallery Image 5">
+    </div>
+</section>
+
+<section id="testimonials" class="section">
+    <h2>Testimonials</h2>
+    <blockquote class="testimonial">
+        "FreshFarm provides the best milk I've ever tasted!" - Customer A
+    </blockquote>
+    <blockquote class="testimonial">
+        "Their commitment to quality is unprecedented." - Customer B
+    </blockquote>
+</section>
+
+<footer>
+    <p>Follow us on:</p>
+    <p>🌐 Facebook | 🐦 Twitter | 📷 Instagram</p>
+    <p>Contact us: <a href="mailto:milkfresh@gmail.com" style="color: white;">milkfresh@gmail.com</a></p>
+</footer>
+
+<script>
+    // Optionally add JavaScript functionality
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseover', () => {
+            card.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.3)';
+        });
+        card.addEventListener('mouseout', () => {
+            card.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        });
+    });
+</script>
+</body>
+</html>
+```
