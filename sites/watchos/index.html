@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luxury watch seller with various brands">
+    <title>WatchOs - Luxury Watches</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #1c1c1c;
+        }
+        header img {
+            height: 50px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffcc00;
+        }
+        .hero {
+            height: 100vh;
+            background: url('./images/hero.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero h1 {
+            font-size: 3em;
+            z-index: 1;
+        }
+        .hero p {
+            z-index: 1;
+        }
+        .section {
+            padding: 50px 20px;
+        }
+        .who-we-are, .services, .gallery, .testimonials {
+            max-width: 1200px;
+            margin: auto;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 30px;
+            flex: 1;
+            min-width: 250px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .highlights {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .highlight {
+            background: #ffffff;
+            margin: 20px;
+            padding: 20px;
+            flex-basis: 30%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background: #1c1c1c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav {
+                margin-top: 10px;
+            }
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+            .highlight {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="./images/logo.png" alt="WatchOs Logo">
+        <nav>
+            <a href="#who-we-are">Who We Are</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#testimonials">Testimonials</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to WatchOs</h1>
+        <p>Sell luxury watches with different brands.</p>
+    </section>
+
+    <section class="section who-we-are" id="who-we-are">
+        <h2>Who We Are</h2>
+        <p>At WatchOs, we specialize in providing a vast selection of luxury watches from the most prestigious brands.</p>
+    </section>
+
+    <section class="section services" id="services">
+        <h2>Our Services</h2>
+        <div class="card">
+            <h3>Luxury Watch Sales</h3>
+            <p>Explore our exquisite collection of luxury watches.</p>
+        </div>
+        <div class="card">
+            <h3>Watch Repair Services</h3>
+            <p>Professional repair services to keep your watch in perfect condition.</p>
+        </div>
+        <div class="card">
+            <h3>Custom Watch Design</h3>
+            <p>Create a bespoke watch tailored to your preferences.</p>
+        </div>
+        <div class="card">
+            <h3>Consultation Services</h3>
+            <p>Receive expert advice on luxury watch selection and maintenance.</p>
+        </div>
+    </section>
+
+    <section class="section highlights" id="highlights">
+        <h2>Why Choose Us</h2>
+        <div class="highlight">
+            <h3>Authenticity Guaranteed</h3>
+            <p>All our watches are 100% authentic and certified.</p>
+        </div>
+        <div class="highlight">
+            <h3>Expert Staff</h3>
+            <p>Our team consists of watch aficionados ready to assist you.</p>
+        </div>
+        <div class="highlight">
+            <h3>Competitive Pricing</h3>
+            <p>We offer the best prices in the market for high-end watches.</p>
+        </div>
+    </section>
+
+    <section class="section gallery" id="gallery">
+        <h2>Gallery</h2>
+        <img src="./images/gallery_1.jpg" alt="WatchOs Gallery Image 1">
+        <img src="./images/gallery_2.jpg" alt="WatchOs Gallery Image 2">
+        <img src="./images/gallery_3.jpg" alt="WatchOs Gallery Image 3">
+        <img src="./images/gallery_4.jpg" alt="WatchOs Gallery Image 4">
+        <img src="./images/gallery_5.jpg" alt="WatchOs Gallery Image 5">
+        <img src="./images/gallery_6.jpg" alt="WatchOs Gallery Image 6">
+        <img src="./images/gallery_7.jpg" alt="WatchOs Gallery Image 7">
+        <img src="./images/gallery_8.jpg" alt="WatchOs Gallery Image 8">
+        <img src="./images/gallery_9.jpg" alt="WatchOs Gallery Image 9">
+    </section>
+
+    <section class="section testimonials" id="testimonials">
+        <h2>Testimonials</h2>
+        <blockquote>"Great quality watches! I couldn't be happier!" - John Doe</blockquote>
+        <blockquote>"An amazing selection and excellent customer service." - Jane Smith</blockquote>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 WatchOs. All Rights Reserved.</p>
+        <p>Contact us: <a href="mailto:watchtest@gmail.com" style="color: #ffcc00;">watchtest@gmail.com</a></p>
+        <div>
+            <a href="#" style="color: white;">Facebook</a> | 
+            <a href="#" style="color: white;">Instagram</a>
+        </div>
+    </footer>
+
+    <script>
+        // Minimal JavaScript for hover effects can be added here if needed
+    </script>
+</body>
+
+</html>
