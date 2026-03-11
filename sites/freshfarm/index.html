@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FreshFarm - 100% original and fresh milk production place and farm">
+    <title>FreshFarm - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            width: 100px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .hero {
+            background-image: url('./images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .services, .testimonials, .gallery {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .service-card, .testimonial, .gallery-image {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            flex: 1 1 30%;
+            max-width: 300px;
+        }
+
+        .service-card:hover, .gallery-image:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .social-icons img {
+            width: 30px;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="./images/logo.png" alt="FreshFarm Logo">
+    <nav>
+        <a href="#who">Who We Are</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Testimonials</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>FreshFarm</h1>
+    <p>Milk production place and farm. 100% original and fresh.</p>
+</section>
+
+<section class="section" id="who">
+    <h2>Who We Are</h2>
+    <p>FreshFarm is dedicated to providing the highest quality milk. We ensure that our products are 100% original and fresh from our farm to your table.</p>
+</section>
+
+<section class="section" id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="service-card">
+            <h3>Quality Milk Production</h3>
+            <p>We pride ourselves on producing only the finest quality milk, free from additives.</p>
+        </div>
+        <div class="service-card">
+            <h3>Organic Farming</h3>
+            <p>Our farm practices organic farming to ensure sustainability and health.</p>
+        </div>
+        <div class="service-card">
+            <h3>Customer Support</h3>
+            <p>We offer unparalleled customer support to assist with all your queries.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="why">
+    <h2>Why Choose Us</h2>
+    <div class="services">
+        <div class="service-card">
+            <h3>Freshness Guaranteed</h3>
+        </div>
+        <div class="service-card">
+            <h3>Farm to Table</h3>
+        </div>
+        <div class="service-card">
+            <h3>High Nutritional Value</h3>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+        <img src="./images/gallery_1.jpg" class="gallery-image" alt="FreshFarm Gallery Image 1">
+        <img src="./images/gallery_2.jpg" class="gallery-image" alt="FreshFarm Gallery Image 2">
+        <img src="./images/gallery_3.jpg" class="gallery-image" alt="FreshFarm Gallery Image 3">
+        <img src="./images/gallery_4.jpg" class="gallery-image" alt="FreshFarm Gallery Image 4">
+        <img src="./images/gallery_5.jpg" class="gallery-image" alt="FreshFarm Gallery Image 5">
+    </div>
+</section>
+
+<section class="section" id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+        <div class="testimonial">"The best milk I've ever tasted! FreshFarm is my go-to!"</div>
+        <div class="testimonial">"Absolutely love their organic products!"</div>
+        <div class="testimonial">"Great service and quality! Highly recommend!"</div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="social-icons">
+        <a href="#"><img src="./images/facebook.png" alt="Facebook Icon"></a>
+        <a href="#"><img src="./images/instagram.png" alt="Instagram Icon"></a>
+        <a href="#"><img src="./images/twitter.png" alt="Twitter Icon"></a>
+    </div>
+    <p>Contact us: <a href="mailto:milkfresh@gmail.com">milkfresh@gmail.com</a></p>
+    <p>FreshFarm © 2023</p>
+</footer>
+
+<script>
+    // JavaScript features can be added here if needed
+</script>
+
+</body>
+</html>
