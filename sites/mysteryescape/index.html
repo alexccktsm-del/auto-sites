@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MysteryEscape | Immersive Escape Rooms with 5 Difficulty Levels</title>
+  <meta name="description" content="MysteryEscape offers immersive escape rooms with 5 difficulty levels and cinematic themes: murder case, horror, and whimsical adventures. Perfect for friends, families, and team building.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="MysteryEscape | Immersive Escape Rooms">
+  <meta property="og:description" content="Five difficulty levels, thrilling themes, and unforgettable puzzles.">
+  <meta property="og:image" content="./images/hero.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0ff1ce">
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --surface: #121826;
+      --elev: #0f1420;
+      --text: #e7ecf3;
+      --muted: #9aa4b2;
+      --accent: #00f0b5;   /* neon teal */
+      --accent-2: #ff2e63; /* neon magenta */
+      --glow: 0 0 24px rgba(0, 240, 181, 0.25), 0 0 48px rgba(255, 46, 99, 0.12);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --shadow-1: 0 6px 24px rgba(0,0,0,0.25);
+      --shadow-2: 0 10px 40px rgba(0,0,0,0.35);
+      --maxw: 1200px;
+      --header-h: 74px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";line-height:1.6;scroll-behavior:smooth}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:1000;background:rgba(11,15,20,0.7);
+      backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid rgba(255,255,255,0.06);
+      transition:box-shadow .3s ease, background .3s ease;
+    }
+    header.scrolled{box-shadow:var(--shadow-1)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:var(--header-h)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:40px;width:auto;filter:drop-shadow(0 4px 12px rgba(0,0,0,.35))}
+    .brand .name{font-weight:800;letter-spacing:.5px;font-size:1.15rem}
+    .brand .tag{display:block;font-size:.72rem;color:var(--muted)}
+    nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+    nav a{padding:10px 12px;border-radius:10px;color:var(--muted);transition:color .2s, background .2s, transform .2s}
+    nav a:hover{color:var(--text);background:rgba(255,255,255,0.06);transform:translateY(-1px)}
+    .cta{
+      margin-left:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#0b0f14;padding:10px 16px;border-radius:999px;font-weight:700;box-shadow:var(--glow);transition:transform .2s, box-shadow .3s
+    }
+    .cta:hover{transform:translateY(-1px) scale(1.02)}
+    .menu-toggle{display:none;cursor:pointer;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.08);align-items:center;justify-content:center;background:rgba(255,255,255,.03)}
+    .menu-toggle span,.menu-toggle::before,.menu-toggle::after{
+      display:block;width:20px;height:2px;background:var(--text);content:"";transition:transform .3s, opacity .3s
+    }
+    .menu-toggle span{margin:0}
+    .menu-toggle::before{transform:translateY(-6px)}
+    .menu-toggle::after{transform:translateY(6px)}
+    .menu-toggle.active span{opacity:0}
+    .menu-toggle.active::before{transform:translateY(0) rotate(45deg)}
+    .menu-toggle.active::after{transform:translateY(0) rotate(-45deg)}
+    .mobile-nav{display:none;flex-direction:column;gap:8px;padding:12px 0}
+    .mobile-nav a{padding:12px;border-radius:10px;background:rgba(255,255,255,.04)}
+    @media (max-width: 900px){
+      nav ul{display:none}
+      .menu-toggle{display:flex}
+      .mobile-nav.show{display:flex}
+      .cta{display:none}
+    }
+
+    /* Hero */
+    #hero{
+      position:relative;min-height:72vh;display:grid;place-items:center;isolation:isolate;
+      background:
+        radial-gradient(1200px 480px at 80% -10%, rgba(0,240,181,0.15), transparent 60%),
+        radial-gradient(900px 600px at -10% 20%, rgba(255,46,99,0.12), transparent 60%),
+        url('./images/hero.jpg') center/cover no-repeat fixed;
+      border-bottom:1px solid rgba(255,255,255,0.06)
+    }
+    #hero::after{
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,15,20,.35) 0%, rgba(11,15,20,.75) 70%, rgba(11,15,20,.95) 100%);
+      z-index:0
+    }
+    .hero-inner{position:relative;z-index:1;text-align:center;padding:80px 0}
+    .kicker{color:var(--accent);letter-spacing:.15em;font-weight:800;text-transform:uppercase;font-size:.82rem}
+    h1{font-size:clamp(2rem, 4.5vw, 3.25rem);line-height:1.1;margin:.4rem 0 1rem}
+    .subtitle{max-width:820px;margin:0 auto;color:#d6dbe4;font-size:1.075rem}
+    .hero-cta{margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn{
+      border:1px solid rgba(255,255,255,0.14);color:var(--text);padding:12px 18px;border-radius:12px;background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);
+      transition:transform .2s, background .2s, border-color .2s
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.26)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0b0f14;border:none;box-shadow:var(--glow);font-weight:800}
+    .stats{display:flex;gap:18px;justify-content:center;margin-top:28px;flex-wrap:wrap;color:var(--muted)}
+    .stat{background:rgba(255,255,255,0.04);padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.07);font-size:.9rem}
+
+    /* Sections */
+    section{scroll-margin-top:calc(var(--header-h) + 12px)}
+    .section{padding:72px 0}
+    h2{font-size:clamp(1.6rem, 3vw, 2.2rem);margin:0 0 12px}
+    .eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.15em;font-weight:800;font-size:.78rem;margin-bottom:8px}
+    .lead{color:var(--muted);max-width:840px}
+
+    /* Who We Are */
+    .about{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center
+    }
+    .about .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-1)
+    }
+    .about .badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .badge{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:.85rem;color:#cfd6e3}
+
+    .about .grid{
+      display:grid;gap:16px;grid-template-columns:repeat(2,1fr)
+    }
+    .about .tile{
+      position:relative;overflow:hidden;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.08);
+      background:radial-gradient(120% 120% at 100% 0%, rgba(0,240,181,0.12), rgba(255,255,255,0.02))
+    }
+    .about .tile::after{
+      content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.04);pointer-events:none
+    }
+    .tile .tile-inner{padding:18px}
+    .tile h3{margin:.2rem 0 .25rem;font-size:1.1rem}
+    .tile p{color:var(--muted);font-size:.95rem}
+
+    @media (max-width: 900px){
+      .about{grid-template-columns:1fr}
+    }
+
+    /* Services */
+    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:24px}
+    @media (max-width: 1100px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.services-grid{grid-template-columns:1fr}}
+    .card{
+      position:relative;border-radius:var(--radius);overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.08);box-shadow:var(--shadow-1);transition:transform .25s ease, box-shadow .25s ease
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-2)}
+    .card .c-head{display:flex;align-items:center;gap:12px;padding:18px 18px 8px}
+    .icon{
+      width:44px;height:44px;display:grid;place-items:center;border-radius:12px;
+      background:radial-gradient(120% 120% at 30% 20%, rgba(0,240,181,0.3), rgba(255,46,99,0.2));
+      box-shadow:inset 0 0 12px rgba(0,0,0,0.35), 0 6px 18px rgba(0,0,0,0.25)
+    }
+    .card h3{margin:0;font-size:1.1rem}
+    .card .c-body{padding:0 18px 18px;color:var(--muted)}
+    .chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .chip{font-size:.8rem;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);color:#cfd6e3}
+
+    /* Why Choose Us */
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}
+    @media (max-width: 1100px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.why-grid{grid-template-columns:1fr}}
+    .why{
+      padding:18px;border-radius:var(--radius-sm);background:linear-gradient(180deg, rgba(0,240,181,0.07), rgba(255,46,99,0.05));
+      border:1px solid rgba(255,255,255,0.1)
+    }
+    .why strong{display:block;margin-bottom:6px}
+    .why p{margin:0;color:#cfd6e3}
+
+    /* Gallery */
+    .gallery-wrap{margin-top:22px}
+    .gallery-grid{columns: 1; column-gap:16px}
+    .gallery-grid img{
+      width:100%;margin:0 0 16px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.03);transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;cursor:pointer
+    }
+    .gallery-grid img:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);filter:brightness(1.05)}
+    @media (min-width: 600px){.gallery-grid{columns: 2}}
+    @media (min-width: 1000px){.gallery-grid{columns: 3}}
+    .gallery-empty{
+      padding:22px;border-radius:14px;border:1px dashed rgba(255,255,255,0.2);color:var(--muted);
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02))
+    }
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:2000}
+    .lightbox.show{display:flex}
+    .lightbox img{max-width:92vw;max-height:84vh;border-radius:12px;box-shadow:var(--shadow-2)}
+    .lightbox .close, .lightbox .prev, .lightbox .next{
+      position:absolute;top:24px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);
+      color:#fff;padding:10px 14px;border-radius:10px;cursor:pointer;backdrop-filter:blur(6px)
+    }
+    .lightbox .close{right:24px}
+    .lightbox .prev{left:24px;top:50%;transform:translateY(-50%)}
+    .lightbox .next{right:24px;top:50%;transform:translateY(-50%)}
+
+    /* Testimonials */
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    @media (max-width: 1100px){.testi-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.testi-grid{grid-template-columns:1fr}}
+    .quote{
+      padding:18px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.08);box-shadow:var(--shadow-1)
+    }
+    .quote .stars{color:#ffd166;margin-bottom:8px}
+    .by{color:#cfd6e3;font-weight:700}
+
+    /* Footer */
+    footer{
+      margin-top:16px;padding:36px 0 26px;border-top:1px solid rgba(255,255,255,0.08);
+      background:radial-gradient(120% 80% at 100% 0%, rgba(0,240,181,0.08), transparent 60%)
+    }
+    .f-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
+    @media (max-width: 900px){.f-grid{grid-template-columns:1fr}}
+    .social{display:flex;gap:12px;margin-top:10px}
+    .social a{
+      width:40px;height:40px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);transition:transform .2s, background .2s
+    }
+    .social a:hover{transform:translateY(-2px);background:rgba(255,255,255,0.08)}
+    .legal{color:var(--muted);margin-top:18px;font-size:.92rem}
+    .footer-mini{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:18px;color:var(--muted);font-size:.9rem}
+    @media (max-width: 640px){.footer-mini{flex-direction:column;align-items:flex-start}}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="top">
+    <div class="container nav">
+      <a class="brand" href="#hero" aria-label="MysteryEscape Home">
+        <img src="./images/logo.png" alt="MysteryEscape logo">
+        <div>
+          <span class="name">MysteryEscape</span>
+          <span class="tag">Escape Rooms</span>
+        </div>
+      </a>
+      <nav aria-label="Primary Navigation">
+        <ul>
+          <li><a href="#about">Who We Are</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact" class="cta">Book Now</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" aria-label="Open Menu"><span></span></button>
+    </div>
+    <div class="container mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+      <a href="#about">Who We Are</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Book Now</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" aria-label="Hero">
+    <div class="container hero-inner">
+      <div class="kicker">Crack Codes. Beat the Clock.</div>
+      <h1>MysteryEscape — Thrilling Escape Rooms with 5 Difficulty Levels</h1>
+      <p class="subtitle">Dive into cinematic worlds: investigate a chilling murder case, survive a pulse‑pounding horror scenario, or chase whimsical magic with a playful, Disney‑like feel. Gather your team, solve clever puzzles, and escape before time runs out.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#services" aria-label="Explore Rooms and Services">Explore Rooms</a>
+        <a class="btn" href="#contact" aria-label="Contact MysteryEscape">Contact Us</a>
+      </div>
+      <div class="stats">
+        <span class="stat">5 Difficulty Levels</span>
+        <span class="stat">3 Signature Themes</span>
+        <span class="stat">2–8 Players/Room</span>
+        <span class="stat">60–90 Minute Sessions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+  <section id="about" class="section">
+    <div class="container about">
+      <div class="panel reveal">
+        <div class="eyebrow">Who We Are</div>
+        <h2>Immersive Stories. Smart Puzzles. Unforgettable Escapes.</h2>
+        <p class="lead">
+          At MysteryEscape, we design narrative‑driven rooms with layered puzzles and cinematic sets.
+          Choose from five difficulty levels across diverse themes — a gritty murder case, a spine‑tingling horror escape, and a whimsical adventure with that warm, Disney‑like charm.
+          Perfect for friends, families, and team building.
+        </p>
+        <div class="badge-row">
+          <span class="badge">Team Building</span>
+          <span class="badge">Family Friendly</span>
+          <span class="badge">Game Masters On‑Site</span>
+          <span class="badge">Accessible Options</span>
+        </div>
+      </div>
+      <div class="grid reveal">
+        <div class="tile">
+          <div class="tile-inner">
+            <h3>Layered Puzzle Design</h3>
+            <p>Logic, pattern, and tactile puzzles that reward collaboration and creative thinking.</p>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="tile-inner">
+            <h3>Atmospheric Set Design</h3>
+            <p>Audio, lighting, and props bring each world to life without jump scares (unless you want them!).</p>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="tile-inner">
+            <h3>Scalable Difficulty</h3>
+            <p>From first‑timers to veterans, five tiers ensure the perfect challenge for your team.</p>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="tile-inner">
+            <h3>Safety & Support</h3>
+            <p>Briefings, clear rules, and attentive game masters for a smooth, safe experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="eyebrow">Our Services</div>
+      <h2>Rooms & Experiences</h2>
+      <p class="lead">Professional, story‑rich rooms crafted for excitement and teamwork. Choose your adventure and difficulty, then race the clock.</p>
+
+      <div class="services-grid">
+        <article class="card reveal">
+          <div class="c-head">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2l9 5v10l-9 5-9-5V7l9-5z" stroke="url(#g1)" stroke-width="1.6"/>
+                <defs><linearGradient id="g1" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#00f0b5"/><stop offset="1" stop-color="#ff2e63"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>Immersive Escape Rooms</h3>
+          </div>
+          <div class="c-body">
+            Explore our signature themes: Murder Case, Horror Survival, and Whimsical Fantasy. Each room blends story, puzzles, and atmosphere.
+            <div class="chip-row">
+              <span class="chip">60–90 mins</span>
+              <span class="chip">2–8 players</span>
+              <span class="chip">5 difficulties</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="c-head">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="url(#g2)" stroke-width="1.6"/>
+                <path d="M8 13l2.5 2.5L16 10" stroke="url(#g2)" stroke-width="1.8" stroke-linecap="round"/>
+                <defs><linearGradient id="g2" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#00f0b5"/><stop offset="1" stop-color="#ff2e63"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>Corporate Team Building</h3>
+          </div>
+          <div class="c-body">
+            Strengthen communication and problem‑solving with guided debriefs and optional scoring. Custom schedules and private sessions available.
+            <div class="chip-row">
+              <span class="chip">Facilitated</span>
+              <span class="chip">Custom timing</span>
+              <span class="chip">Invoice support</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="c-head">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 8a4 4 0 110 8 4 4 0 010-8z" stroke="url(#g3)" stroke-width="1.6"/>
+                <path d="M4 20c1.5-3 4.5-5 8-5s6.5 2 8 5" stroke="url(#g3)" stroke-width="1.6" stroke-linecap="round"/>
+                <defs><linearGradient id="g3" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#00f0b5"/><stop offset="1" stop-color="#ff2e63"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>Birthdays & Private Events</h3>
+          </div>
+          <div class="c-body">
+            Celebrate with a unique adventure. Party add‑ons, photo ops, and flexible room resets to fit your group size and pace.
+            <div class="chip-row">
+              <span class="chip">Group rates</span>
+              <span class="chip">Photos</span>
+              <span class="chip">Cake‑friendly</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="c-head">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 7h16v10H4z" stroke="url(#g4)" stroke-width="1.6"/>
+                <path d="M4 7l8 6 8-6" stroke="url(#g4)" stroke-width="1.6"/>
+                <defs><linearGradient id="g4" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#00f0b5"/><stop offset="1" stop-color="#ff2e63"/></linearGradient></defs>
+              </svg>
+            </div>
+            <h3>Gift Vouchers</h3>
+          </div>
+          <div class="c-body">
+            Give the gift of adventure. Digital codes delivered instantly with flexible redemption across rooms and difficulties.
+            <div class="chip-row">
+              <span class="chip">Instant email</span>
+              <span class="chip">Any theme</span>
+              <span class="chip">Valid 12 months</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why" class="section">
+    <div class="container">
+      <div class="eyebrow">Why Choose Us</div>
+      <h2>Designed for Thrills, Built for Teams</h2>
+      <div class="why-grid">
+        <div class="why reveal">
+          <strong>Five Difficulty Levels</strong>
+          <p>From beginners to experts, choose your challenge and get tailored hints when needed.</p>
+        </div>
+        <div class="why reveal">
+          <strong>Cinematic Themes</strong>
+          <p>Murder mystery, horror survival, or whimsical wonder — each with handcrafted sets and soundscapes.</p>
+        </div>
+        <div class="why reveal">
+          <strong>Premium Experience</strong>
+          <p>Professional game masters, safety‑first policies, and spotless rooms ready for every group.</p>
+        </div>
+        <div class="why reveal">
+          <strong>Great Location & Times</strong>
+          <p>Easy access, multiple daily slots, and private bookings available on request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="eyebrow">Gallery</div>
+      <h2>Inside the MysteryEscape Worlds</h2>
+      <p class="lead">A peek at our atmospheres, props, and puzzle moments.</p>
+      <div class="gallery-wrap">
+        <div class="gallery-grid" id="galleryGrid" aria-live="polite">
+          <!-- Zero gallery links were provided; generating exactly 0 images as required. -->
+        </div>
+        <div class="gallery-empty" id="galleryEmpty">Our latest photos are being prepared. Check back soon!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="eyebrow">Testimonials</div>
+      <h2>Players Are Talking</h2>
+      <div class="testi-grid">
+        <div class="quote reveal">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          “The murder case room felt like a real investigation — clever puzzles and a brilliant twist at the end!”
+          <div class="by">— Jordan P.</div>
+        </div>
+        <div class="quote reveal">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          “Perfect team builder. We actually communicated better by the end — and we escaped with 2 minutes left!”
+          <div class="by">— Priya S.</div>
+        </div>
+        <div class="quote reveal">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          “The horror theme was intense but fun. Atmosphere was movie‑quality. Staff were fantastic.”
+          <div class="by">— Alex R.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container f-grid">
+      <div>
+        <a class="brand" href="#hero" aria-label="MysteryEscape Home">
+          <img src="./images/logo.png" alt="MysteryEscape logo">
+          <div>
+            <span class="name">MysteryEscape</span>
+            <span class="tag">Escape Rooms</span>
+          </div>
+        </a>
+        <p class="legal">Immersive escape rooms with five difficulty levels and cinematic themes. Book a session and put your wits to the test.</p>
+        <div class="social" aria-label="Social media">
+          <a href="#" aria-label="MysteryEscape on Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#s1)" stroke-width="1.6"/>
+              <circle cx="12" cy="12" r="4" stroke="url(#s1)" stroke-width="1.6"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="#ff2e63"/>
+              <defs><linearGradient id="s1" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#00f0b5"/><stop offset="1" stop-color="#ff2e63"/></linearGradient></defs>
+            </svg>
+          </a>
+          <a href="#" aria-label="MysteryEscape on TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14 5c1.3 2.2 3.1 3.4 5 3.6v3c-1.9-.1-3.7-.8-5-2v6.2a5 5 0 11-3-4.6V7h3z" stroke="url(#s2)" stroke-width="1.6" fill="none"/>
+              <defs><linearGradient id="s2" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#00f0b5"/><stop offset="1" stop-color="#ff2e63"/></linearGradient></defs>
+            </svg>
+          </a>
+          <a href="#" aria-label="MysteryEscape on X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 3l18 18M21 3L3 21" stroke="url(#s3)" stroke-width="1.6" stroke-linecap="round"/>
+              <defs><linearGradient id="s3" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#00f0b5"/><stop offset="1" stop-color="#ff2e63"/></linearGradient></defs>
+            </svg>
+          </a>
+          <a href="#" aria-label="MysteryEscape on Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v3H8v3h3v6h3v-6h3l1-3h-4V9c0-.6.4-1 1-1z" stroke="url(#s4)" stroke-width="1.6" fill="none"/>
+              <defs><linearGradient id="s4" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#00f0b5"/><stop offset="1" stop-color="#ff2e63"/></linearGradient></defs>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow">Explore</div>
+        <p><a href="#services">Rooms & Services</a><br><a href="#why">Why Choose Us</a><br><a href="#gallery">Gallery</a></p>
+      </div>
+      <div>
+        <div class="eyebrow">Contact</div>
+        <p>Email: <a href="mailto:testmystery@gmail.com">testmystery@gmail.com</a><br>Hours: Mon–Sun, 10:00–22:00</p>
+      </div>
+    </div>
+    <div class="container footer-mini">
+      <span>© <span id="year"></span> MysteryEscape. All rights reserved.</span>
+      <span>Safety‑first, story‑driven escape room experiences.</span>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+    <button class="close" aria-label="Close image">Close ✕</button>
+    <button class="prev" aria-label="Previous image">‹</button>
+    <img src="" alt="MysteryEscape gallery image" id="lightboxImg">
+    <button class="next" aria-label="Next image">›</button>
+  </div>
+
+  <script>
+    // Header shadow on scroll
+    const header = document.querySelector('header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+    window.addEventListener('scroll', onScroll); onScroll();
+
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.getElementById('mobileNav');
+    toggle.addEventListener('click', ()=>{
+      toggle.classList.toggle('active');
+      mobileNav.classList.toggle('show');
+      toggle.setAttribute('aria-expanded', toggle.classList.contains('active'));
+    });
+    mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+      toggle.classList.remove('active'); mobileNav.classList.remove('show');
+    }));
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, {threshold: 0.18});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Gallery initialization (exactly as many images as provided by the user list)
+    // The provided list contained 0 items, so we keep the grid empty and show placeholder.
+    (function initGallery(){
+      const grid = document.getElementById('galleryGrid');
+      const placeholder = document.getElementById('galleryEmpty');
+      const images = grid.querySelectorAll('img');
+      placeholder.style.display = images.length ? 'none' : 'block';
+    })();
+
+    // Lightbox (works if images are present)
+    (function lightbox(){
+      const grid = document.getElementById('galleryGrid');
+      const box = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      const prev = box.querySelector('.prev');
+      const next = box.querySelector('.next');
+      const closeBtn = box.querySelector('.close');
+      let items = [], idx = 0;
+
+      function open(i){
+        items = Array.from(grid.querySelectorAll('img'));
+        if(!items.length) return;
+        idx = ((i % items.length) + items.length) % items.length;
+        img.src = items[idx].src;
+        img.alt = items[idx].alt || 'MysteryEscape gallery image';
+        box.classList.add('show');
+      }
+      function close(){ box.classList.remove('show'); }
+      function nav(d){ if(!items.length) return; open(idx + d); }
+
+      grid.addEventListener('click', e=>{
+        const t = e.target;
+        if(t.tagName === 'IMG'){ open(Array.from(grid.children).indexOf(t)); }
+      });
+      closeBtn.addEventListener('click', close);
+      prev.addEventListener('click', ()=>nav(-1));
+      next.addEventListener('click', ()=>nav(1));
+      box.addEventListener('click', e=>{ if(e.target === box) close(); });
+      window.addEventListener('keydown', e=>{
+        if(!box.classList.contains('show')) return;
+        if(e.key === 'Escape') close();
+        if(e.key === 'ArrowLeft') nav(-1);
+        if(e.key === 'ArrowRight') nav(1);
+      });
+    })();
+  </script>
+</body>
+</html>
