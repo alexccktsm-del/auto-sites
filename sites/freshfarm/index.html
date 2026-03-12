@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FreshFarm - 100% original and fresh milk production place and farm.">
+    <title>FreshFarm - Quality Milk Production</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background: #f8f8f8;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            height: 50px;
+        }
+        nav {
+            font-size: 1.2em;
+        }
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+        .hero {
+            background: url('./images/hero.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        .about, .services, .gallery, .testimonials {
+            padding: 20px;
+        }
+        .about h2, .services h2, .gallery h2, .testimonials h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .about p {
+            max-width: 800px;
+            margin: auto;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            flex: 1 1 30%;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .testimonials {
+            background: #f9f9f9;
+            padding: 40px 20px;
+        }
+        .testimonial {
+            max-width: 600px;
+            margin: 20px auto;
+            font-style: italic;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        .social-icons {
+            margin: 10px 0;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./images/logo.png" alt="FreshFarm Logo">
+        <nav>
+            <a href="#about">Who We Are</a>
+            <a href="#services">Services</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    
+    <div class="hero">
+        <h1>FreshFarm</h1>
+        <p>Milk production place and farm. 100% original and fresh.</p>
+    </div>
+
+    <section id="about" class="about">
+        <h2>Who We Are</h2>
+        <p>At FreshFarm, we are dedicated to providing the highest quality milk fresh from our farm to your table. Our processes ensure that every drop is pure and natural.</p>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-card">
+            <h3>Milk Production</h3>
+            <p>Engaging with sustainable farming practices to ensure top quality milk.</p>
+        </div>
+        <div class="service-card">
+            <h3>Quality Control</h3>
+            <p>Regular testing and monitoring to uphold milk quality standards.</p>
+        </div>
+        <div class="service-card">
+            <h3>Delivery Services</h3>
+            <p>Fresh milk delivered right to your doorstep, ensuring convenience and freshness.</p>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial">"FreshFarm provides the best quality milk I've ever tasted!"</div>
+        <div class="testimonial">"Their freshness is hard to beat. Highly recommend!"</div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <img src="./images/gallery_1.jpg" alt="Gallery image 1 - FreshFarm">
+        <img src="./images/gallery_2.jpg" alt="Gallery image 2 - FreshFarm">
+        <img src="./images/gallery_3.jpg" alt="Gallery image 3 - FreshFarm">
+        <img src="./images/gallery_4.jpg" alt="Gallery image 4 - FreshFarm">
+        <img src="./images/gallery_5.jpg" alt="Gallery image 5 - FreshFarm">
+        <img src="./images/gallery_6.jpg" alt="Gallery image 6 - FreshFarm">
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>Contact us: <a href="mailto:milkfresh@gmail.com">milkfresh@gmail.com</a></p>
+        <p>&copy; 2023 FreshFarm. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript can be added here for interactive features if needed
+    </script>
+</body>
+</html>
