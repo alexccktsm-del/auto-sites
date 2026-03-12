@@ -1,0 +1,197 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TeaTest - Premium tea production and various beverages">
+    <title>TeaTest - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #4a4a4a;
+            /* Set a light background color */
+            background-color: #f9f9f9;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #2b4d2b;
+            color: white;
+        }
+        header img {
+            width: 100px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        .hero {
+            background-image: url('./images/hero.jpg');
+            height: 75vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        .who-we-are, .services, .why-choose-us, .gallery, .testimonials {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .service-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .why-choose-us {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .highlight-box {
+            background-color: #e9f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 200px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .testimonials {
+            background-color: #f1f1f1;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #2b4d2b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="./images/logo.png" alt="TeaTest Logo">
+    <nav>
+        <ul>
+            <li><a href="#who-we-are">Who We Are</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>TeaTest</h1>
+        <p>Tea production, different beverages</p>
+    </div>
+</section>
+
+<section id="who-we-are" class="who-we-are">
+    <h2>Who We Are</h2>
+    <p>At TeaTest, we pride ourselves on our quality tea production and a diverse range of beverages to cater to all tea lovers.</p>
+</section>
+
+<section id="services" class="services">
+    <h2>Services</h2>
+    <div class="service-card">
+        <h3>Herbal Teas</h3>
+        <p>Experience the soothing flavors of our herbal teas, crafted for relaxation.</p>
+    </div>
+    <div class="service-card">
+        <h3>Green Teas</h3>
+        <p>Our premium green teas offer freshness and superior taste in every cup.</p>
+    </div>
+    <div class="service-card">
+        <h3>Black Teas</h3>
+        <p>Indulge in rich and robust black teas sourced from the finest plantations.</p>
+    </div>
+    <div class="service-card">
+        <h3>Custom Blends</h3>
+        <p>Create your own unique tea blend with us; an experience for true tea lovers.</p>
+    </div>
+</section>
+
+<section class="why-choose-us">
+    <h2>Why Choose Us</h2>
+    <div class="highlight-box">Quality Ingredients</div>
+    <div class="highlight-box">Expert Craftsmanship</div>
+    <div class="highlight-box">Sustainable Practices</div>
+</section>
+
+<section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <img src="./images/gallery_1.jpg" alt="TeaTest Gallery Image 1">
+    <img src="./images/gallery_2.jpg" alt="TeaTest Gallery Image 2">
+    <img src="./images/gallery_3.jpg" alt="TeaTest Gallery Image 3">
+    <img src="./images/gallery_4.jpg" alt="TeaTest Gallery Image 4">
+    <img src="./images/gallery_5.jpg" alt="TeaTest Gallery Image 5">
+    <img src="./images/gallery_6.jpg" alt="TeaTest Gallery Image 6">
+    <img src="./images/gallery_7.jpg" alt="TeaTest Gallery Image 7">
+    <img src="./images/gallery_8.jpg" alt="TeaTest Gallery Image 8">
+</section>
+
+<section id="testimonials" class="testimonials">
+    <h2>Testimonials</h2>
+    <p>"The best tea I've ever tasted! Highly recommend!" - Jane D.</p>
+    <p>"A delightful experience from start to finish!" - John S.</p>
+</section>
+
+<footer>
+    <p>Connect with us:</p>
+    <p>Email: <a href="mailto:test@gmail.com">test@gmail.com</a></p>
+</footer>
+
+<script>
+    // Minimal script for interaction can go here (for future enhancements)
+</script>
+
+</body>
+</html>
+```
